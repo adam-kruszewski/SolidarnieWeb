@@ -63,12 +63,12 @@ namespace SolidarnieWebApp.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind(
-                  scanner =>
-                      scanner.FromAssembliesMatching("*")
-                          .IncludingNonePublicTypes()
-                          .SelectAllClasses()
-                          .BindDefaultInterfaces());
+            //kernel.Bind(
+            //      scanner =>
+            //          scanner.FromAssembliesMatching("*")
+            //              .IncludingNonePublicTypes()
+            //              .SelectAllClasses()
+            //              .BindDefaultInterfaces());
         }
     }
 }

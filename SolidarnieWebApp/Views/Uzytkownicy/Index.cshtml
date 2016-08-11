@@ -1,0 +1,32 @@
+﻿@model SolidarnieWebApp.Models.ListaUzytkownikowModel
+
+    <h2>Lista użytkowników</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>Nazwa</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model.Uzytkownicy) {
+        <tr>
+            <td>
+                @item.Nazwa
+            </td>
+            <td>
+                @item.Email
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+    </table>
