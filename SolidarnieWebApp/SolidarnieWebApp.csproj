@@ -187,6 +187,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ListaUzytkownikowModel.cs" />
+    <Compile Include="Models\UzytkownikEditModel.cs" />
     <Compile Include="Models\UzytkownikRowModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -233,6 +234,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Uzytkownicy\Index.cshtml" />
+    <Content Include="Views\Uzytkownicy\Create.cshtml" />
+    <Content Include="Views\Uzytkownicy\Edit.cshtml" />
+    <Content Include="Views\Uzytkownicy\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
