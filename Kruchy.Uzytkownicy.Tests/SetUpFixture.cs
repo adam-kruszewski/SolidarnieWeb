@@ -10,7 +10,7 @@ namespace Kruchy.Uzytkownicy.Tests
         [OneTimeSetUp]
         public void RunBeforeAnyTests()
         {
-            Injector.Instance.LoadOnce<UzytkownicyModule>();
+            Injector.Instancja.LoadOnce<UzytkownicyModule>();
         }
 
         [OneTimeTearDown]

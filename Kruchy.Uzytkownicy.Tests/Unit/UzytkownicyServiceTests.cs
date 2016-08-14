@@ -13,7 +13,7 @@ namespace Kruchy.Uzytkownicy.Tests.Unit
         [SetUp]
         public void SetUpEachTest()
         {
-            service = (IUzytkownicyService)Injector.Instance.GetService(typeof(IUzytkownicyService));
+            service = Injector.Instancja.Pobierz<IUzytkownicyService>();
         }
 
         [Test]

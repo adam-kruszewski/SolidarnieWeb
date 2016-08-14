@@ -52,6 +52,7 @@
     <Compile Include="Ladowanie\NinjectKernelExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Testy\Injector.cs" />
+    <Compile Include="Testy\PobieranieZInjectoraExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
