@@ -1,4 +1,5 @@
-﻿using Kruchy.Uzytkownicy.Tests.NInjectTestUtils;
+﻿using Kruchy.NInject.Adapter.Ladowanie;
+using Kruchy.NInject.Adapter.Testy;
 using NUnit.Framework;
 
 namespace Kruchy.Uzytkownicy.Tests

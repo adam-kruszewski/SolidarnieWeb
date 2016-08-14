@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using Ninject.Extensions.Conventions.BindingGenerators;
 using Ninject.Syntax;
 
-namespace Kruchy.Uzytkownicy.Tests.NInjectTestUtils
+namespace Kruchy.NInject.Adapter.Ladowanie
 {
     class BindingGenerator : IBindingGenerator
     {
@@ -72,4 +72,5 @@ namespace Kruchy.Uzytkownicy.Tests.NInjectTestUtils
                    @interface.Name.StartsWith("ICommandHandler");
         }
     }
+
 }

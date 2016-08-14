@@ -4,7 +4,7 @@ using Ninject;
 using Ninject.Extensions.Conventions;
 using Ninject.Modules;
 
-namespace Kruchy.Uzytkownicy.Tests.NInjectTestUtils
+namespace Kruchy.NInject.Adapter.Ladowanie
 {
     public static class NinjectKernelExtensions
     {

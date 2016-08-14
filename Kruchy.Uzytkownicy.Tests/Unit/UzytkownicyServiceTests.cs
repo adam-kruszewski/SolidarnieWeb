@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
+using Kruchy.NInject.Adapter.Testy;
 using Kruchy.Uzytkownicy.Services;
-using Kruchy.Uzytkownicy.Tests.NInjectTestUtils;
 using NUnit.Framework;
 
 namespace Kruchy.Uzytkownicy.Tests.Unit

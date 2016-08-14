@@ -1,8 +1,8 @@
 ﻿using Ninject;
 
-namespace Kruchy.Uzytkownicy.Tests.NInjectTestUtils
+namespace Kruchy.NInject.Adapter.Testy
 {
-    class Injector
+    public class Injector
     {
         private static IKernel InstancjaKernela { get; set; }
         public static IKernel Instance
