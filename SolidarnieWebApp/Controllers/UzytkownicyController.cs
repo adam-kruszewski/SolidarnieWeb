@@ -1,11 +1,19 @@
-﻿using SolidarnieWebApp.Models;
-using System.Web.Mvc;
-using System;
+﻿using System.Web.Mvc;
+using Kruchy.Uzytkownicy.Services;
+using SolidarnieWebApp.Models;
 
 namespace SolidarnieWebApp.Controllers
 {
     public class UzytkownicyController : Controller
     {
+        private readonly IUzytkownicyService uzytkownicyService;
+
+        public UzytkownicyController(
+            IUzytkownicyService uzytkownicyService)
+        {
+            this.uzytkownicyService = uzytkownicyService;
+        }
+
         public ActionResult Index()
         {
             var model = new ListaUzytkownikowModel();
