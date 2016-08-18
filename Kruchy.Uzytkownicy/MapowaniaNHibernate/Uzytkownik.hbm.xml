@@ -3,7 +3,7 @@
                    assembly="Kruchy.Uzytkownicy"
                    namespace="Kruchy.Uzytkownicy.Domain">
 
-  <class name="Uzytkownik">
+  <class name="Uzytkownik" table="Uzytkownicy">
     <id name="ID">
       <generator class="identity" />
     </id>
