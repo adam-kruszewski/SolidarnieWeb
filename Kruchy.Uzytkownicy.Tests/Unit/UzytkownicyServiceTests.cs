@@ -1,6 +1,9 @@
 ﻿using FluentAssertions;
 using Kruchy.NInject.Adapter.Testy;
+using Kruchy.Uzytkownicy.Domain;
 using Kruchy.Uzytkownicy.Services;
+using NHibernate.Cfg;
+using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
 
 namespace Kruchy.Uzytkownicy.Tests.Unit
@@ -14,6 +17,13 @@ namespace Kruchy.Uzytkownicy.Tests.Unit
         public void SetUpEachTest()
         {
             service = Injector.Instancja.Pobierz<IUzytkownicyService>();
+
+            var cfg = new Configuration();
+
+            cfg.Configure();
+
+            cfg.AddAssembly(typeof(Uzytkownik).Assembly);
+            new SchemaExport(cfg).Execute(true, true, false);
         }
 
         [Test]
