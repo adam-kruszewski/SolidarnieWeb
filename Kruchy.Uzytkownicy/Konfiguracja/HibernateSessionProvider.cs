@@ -18,8 +18,7 @@ namespace Kruchy.Uzytkownicy.Konfiguracja
                 konfiguracja = new Configuration();
                 konfiguracja.Configure();
                 konfiguracja.AddAssembly(typeof(Uzytkownik).Assembly);
-
-                fabrykaSesji = DajKonfiguracje().BuildSessionFactory();
+                fabrykaSesji = konfiguracja.BuildSessionFactory();
             }
             return konfiguracja;
         }
