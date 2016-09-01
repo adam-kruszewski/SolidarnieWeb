@@ -12,12 +12,6 @@ namespace SolidarnieWebApp.Models
         public ListaUzytkownikowModel()
         {
             Uzytkownicy = new List<UzytkownikRowModel>();
-
-            Uzytkownicy.Add(new UzytkownikRowModel {
-                Nazwa = "uztykownik1",
-                Email = "uzytkonik1@u1.pl",
-                ID = 4
-            });
         }
     }
 }

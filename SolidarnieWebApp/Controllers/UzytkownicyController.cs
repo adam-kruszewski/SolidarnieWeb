@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using Kruchy.Uzytkownicy.Domain;
 using Kruchy.Uzytkownicy.Services;
 using SolidarnieWebApp.Models;
 
@@ -16,8 +18,21 @@ namespace SolidarnieWebApp.Controllers
 
         public ActionResult Index()
         {
+            var u = uzytkownicyService.SzukajWszystkich();
+
             var model = new ListaUzytkownikowModel();
+            model.Uzytkownicy = u.Select(o => DajUzytkownikRowModel(o)).ToList();
             return View(model);
+        }
+
+        private UzytkownikRowModel DajUzytkownikRowModel(Uzytkownik o)
+        {
+            return new UzytkownikRowModel
+            {
+                ID = o.ID,
+                Nazwa = o.Nazwa,
+                Email = o.Email
+            };
         }
 
         public ActionResult Create()
@@ -35,7 +50,17 @@ namespace SolidarnieWebApp.Controllers
                 return View(form);
             }
             else
+            {
+                uzytkownicyService
+                    .Dodaj(
+                        new DodanieUzytkownikaRequest
+                        {
+                            Nazwa = form.Nazwa,
+                            Email = form.Email,
+                            Haslo = "123"
+                        });
                 return RedirectToAction("Index");
+            }
         }
 
         public ActionResult Edit(int id)

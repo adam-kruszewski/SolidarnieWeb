@@ -286,6 +286,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kruchy.NInject.Adapter\Kruchy.NInject.Adapter.csproj">
+      <Project>{1b0aeb6d-5452-4b4d-aa62-70b83740e6f6}</Project>
+      <Name>Kruchy.NInject.Adapter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kruchy.Uzytkownicy\Kruchy.Uzytkownicy.csproj">
       <Project>{EC0CBE27-C96D-4EDD-B59D-2BA73324F67D}</Project>
       <Name>Kruchy.Uzytkownicy</Name>

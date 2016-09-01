@@ -8,7 +8,7 @@ namespace Kruchy.Uzytkownicy
     {
         public override void Load()
         {
-            //Bind<IUzytkownicyService>().To<UzytkownicyService>();
+            Bind<IUzytkownicyService>().To<UzytkownicyService>();
         }
     }
 }

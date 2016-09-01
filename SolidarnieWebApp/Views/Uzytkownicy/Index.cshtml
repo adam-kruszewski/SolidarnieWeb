@@ -3,7 +3,10 @@
 <h2>Lista użytkowników</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create")" class="btn btn-default">
+        <span class="glyphicon glyphicon-plus"></span>
+        Dodaj nowego
+    </a>
 </p>
 
 <table class="table">
@@ -23,9 +26,14 @@
                 @item.Email
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-edit"></span>
+                    Edytuj
+                </a>
+                <a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    Usuń
+                </a>
             </td>
         </tr>
     }
