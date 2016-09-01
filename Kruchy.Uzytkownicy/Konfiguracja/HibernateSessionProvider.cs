@@ -5,7 +5,7 @@ using NHibernate.Cfg;
 
 namespace Kruchy.Uzytkownicy.Konfiguracja
 {
-    class HibernateSessionProvider : IHibernateSessionProvider
+    public class HibernateSessionProvider : IHibernateSessionProvider
     {
         private Configuration konfiguracja;
         private ISession sesja;

@@ -4,7 +4,7 @@ using NHibernate.Cfg;
 
 namespace Kruchy.Uzytkownicy.Konfiguracja
 {
-    interface IHibernateSessionProvider : IDisposable
+    public interface IHibernateSessionProvider : IDisposable
     {
         ISession DajSesje();
         Configuration DajKonfiguracje();
