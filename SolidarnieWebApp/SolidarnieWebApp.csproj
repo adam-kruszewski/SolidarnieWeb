@@ -209,6 +209,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdministracjaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UzytkownicyController.cs" />
     <Compile Include="Global.asax.cs">
@@ -270,6 +271,8 @@
     <Content Include="Views\Uzytkownicy\Create.cshtml" />
     <Content Include="Views\Uzytkownicy\Edit.cshtml" />
     <Content Include="Views\Uzytkownicy\Delete.cshtml" />
+    <Content Include="Views\Administracja\Index.cshtml" />
+    <Content Include="Views\Administracja\UtworzBaze.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
