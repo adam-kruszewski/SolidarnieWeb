@@ -1,30 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Kruchy.Uzytkownicy.Konfiguracja;
+using NHibernate.Tool.hbm2ddl;
+using SolidarnieWebApp.Tmp;
 
 namespace SolidarnieWebApp.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ITest test;
+        private readonly IHibernateSessionProvider sessionProvider;
+
+        public HomeController(
+            ITest test,
+            IHibernateSessionProvider sessionProvider)
+        {
+            this.test = test;
+            this.sessionProvider = sessionProvider;
+        }
+
         public ActionResult Index()
         {
+            ViewBag.Title = "Tytuł " + test.DajStringa() + " drugi " + test.DajStringa();
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult UtworzBaze()
         {
-            ViewBag.Message = "Your application description page.";
+            var konfiguracja = sessionProvider.DajKonfiguracje();
 
-            return View();
-        }
+            new SchemaExport(konfiguracja).Execute(true, true, false);
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            ViewBag.Komunikat = "Utworzono bazę danych";
+            return View("Index");
         }
     }
 }

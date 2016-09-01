@@ -13,6 +13,8 @@ namespace SolidarnieWebApp.App_Start
     using Ninject.Extensions.Conventions;
     using Kruchy.Uzytkownicy.Services;
     using Kruchy.Uzytkownicy;
+    using Tmp;
+    using Kruchy.Uzytkownicy.Konfiguracja;
 
     public static class NinjectWebCommon
     {
@@ -65,6 +67,10 @@ namespace SolidarnieWebApp.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Load<UzytkownicyModule>();
+            kernel.Bind<ITest>().To<Test1>().InRequestScope();
+            kernel.Bind<IHibernateSessionProvider>()
+                .To<HibernateSessionProvider>()
+                    .InRequestScope();
             //kernel.Bind<IUzytkownicyService>().To<UzytkownicyService>
             //kernel.Bind(
             //      scanner =>
