@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using Kruchy.Uzytkownicy.Konfiguracja;
-using NHibernate.Tool.hbm2ddl;
 
 namespace SolidarnieWebApp.Controllers
 {
@@ -21,9 +20,7 @@ namespace SolidarnieWebApp.Controllers
 
         public ActionResult UtworzBaze()
         {
-            var konfiguracja = sessionProvider.DajKonfiguracje();
-
-            new SchemaExport(konfiguracja).Execute(true, true, false);
+            sessionProvider.UtworzBaze();
 
             ViewBag.Komunikat = "Utworzono bazę danych";
             return View();

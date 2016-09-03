@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using Kruchy.Uzytkownicy.Konfiguracja;
-using NHibernate.Tool.hbm2ddl;
 using SolidarnieWebApp.Tmp;
 
 namespace SolidarnieWebApp.Controllers
@@ -22,16 +21,6 @@ namespace SolidarnieWebApp.Controllers
         {
             ViewBag.Title = "Tytuł " + test.DajStringa() + " drugi " + test.DajStringa();
             return View();
-        }
-
-        public ActionResult UtworzBaze()
-        {
-            var konfiguracja = sessionProvider.DajKonfiguracje();
-
-            new SchemaExport(konfiguracja).Execute(true, true, false);
-
-            ViewBag.Komunikat = "Utworzono bazę danych";
-            return View("Index");
         }
     }
 }

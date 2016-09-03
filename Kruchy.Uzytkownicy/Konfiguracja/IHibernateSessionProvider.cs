@@ -1,12 +1,11 @@
 ﻿using System;
 using NHibernate;
-using NHibernate.Cfg;
 
 namespace Kruchy.Uzytkownicy.Konfiguracja
 {
     public interface IHibernateSessionProvider : IDisposable
     {
+        void UtworzBaze();
         ISession DajSesje();
-        Configuration DajKonfiguracje();
     }
 }

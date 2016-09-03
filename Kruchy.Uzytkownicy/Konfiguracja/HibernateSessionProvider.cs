@@ -2,6 +2,7 @@
 using Kruchy.Uzytkownicy.Domain;
 using NHibernate;
 using NHibernate.Cfg;
+using NHibernate.Tool.hbm2ddl;
 
 namespace Kruchy.Uzytkownicy.Konfiguracja
 {
@@ -10,6 +11,13 @@ namespace Kruchy.Uzytkownicy.Konfiguracja
         private Configuration konfiguracja;
         private ISession sesja;
         private ISessionFactory fabrykaSesji;
+
+        public void UtworzBaze()
+        {
+            var konfiguracja = DajKonfiguracje();
+
+            new SchemaExport(konfiguracja).Execute(true, true, false);
+        }
 
         public Configuration DajKonfiguracje()
         {
