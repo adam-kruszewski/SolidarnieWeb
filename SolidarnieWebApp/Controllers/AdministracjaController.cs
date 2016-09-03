@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using Kruchy.Uzytkownicy.Konfiguracja;
+using Kruchy.NHibernate.Provider;
 
 namespace SolidarnieWebApp.Controllers
 {

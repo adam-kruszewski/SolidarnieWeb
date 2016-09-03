@@ -14,7 +14,7 @@ namespace SolidarnieWebApp.App_Start
     using Kruchy.Uzytkownicy.Services;
     using Kruchy.Uzytkownicy;
     using Tmp;
-    using Kruchy.Uzytkownicy.Konfiguracja;
+    using Kruchy.NHibernate.Provider;
 
     public static class NinjectWebCommon
     {

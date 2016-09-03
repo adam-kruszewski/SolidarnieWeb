@@ -108,8 +108,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Uzytkownik.cs" />
-    <Compile Include="Konfiguracja\HibernateSessionProvider.cs" />
-    <Compile Include="Konfiguracja\IHibernateSessionProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DodanieUzytkownikaRequest.cs" />
     <Compile Include="Services\Impl\UzytkownicyService.cs" />
@@ -141,6 +139,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kruchy.NHibernate\Kruchy.NHibernate.csproj">
+      <Project>{bbf4f787-0d49-477e-b857-556d87c6e305}</Project>
+      <Name>Kruchy.NHibernate</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.102.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.102.0\build\net451\System.Data.SQLite.Core.targets')" />

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using Kruchy.NHibernate.Provider;
 using Kruchy.Uzytkownicy.Domain;
-using Kruchy.Uzytkownicy.Konfiguracja;
 
 namespace Kruchy.Uzytkownicy.Services.Impl
 {

@@ -1,10 +1,9 @@
-﻿using System;
-using Kruchy.Uzytkownicy.Domain;
+﻿using Kruchy.NHibernate.RejestracjaAssembly;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 
-namespace Kruchy.Uzytkownicy.Konfiguracja
+namespace Kruchy.NHibernate.Provider
 {
     public class HibernateSessionProvider : IHibernateSessionProvider
     {
@@ -25,7 +24,8 @@ namespace Kruchy.Uzytkownicy.Konfiguracja
             {
                 konfiguracja = new Configuration();
                 konfiguracja.Configure();
-                konfiguracja.AddAssembly(typeof(Uzytkownik).Assembly);
+                foreach (var assembly in RejestratorAssembly.DajZarejestrowaneAssembly())
+                    konfiguracja.AddAssembly(assembly);
                 fabrykaSesji = konfiguracja.BuildSessionFactory();
             }
             return konfiguracja;
