@@ -1,0 +1,29 @@
+﻿@using System.Web.Mvc.Html
+@functions
+{
+    private object GetModelValue()
+    {
+        var bytes = Model as byte[];
+        return bytes != null ? Convert.ToBase64String(bytes) : Model;
+    }
+}
+
+@{ var value = GetModelValue(); }
+
+@if (!ViewData.ModelMetadata.HideSurroundingHtml)
+{
+    if (value == null && !string.IsNullOrWhiteSpace(ViewData.ModelMetadata.NullDisplayText))
+    {
+        <span class="help-block text-only">
+            @ViewData.ModelMetadata.NullDisplayText
+        </span>
+    }
+    else
+    {
+        <span class="uneditable-input">
+            @ViewData.TemplateInfo.FormattedModelValue
+        </span>
+    }
+}
+
+@Html.Hidden("", value)

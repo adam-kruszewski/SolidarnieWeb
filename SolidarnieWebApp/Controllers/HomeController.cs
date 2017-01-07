@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using SolidarnieWebApp.Models;
 
 namespace SolidarnieWebApp.Controllers
 {
@@ -6,7 +7,7 @@ namespace SolidarnieWebApp.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View(model: new UzytkownikEditModel());
         }
     }
 }

@@ -215,6 +215,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\FormHelper.cs" />
     <Compile Include="Models\ListaUzytkownikowModel.cs" />
     <Compile Include="Models\UzytkownikEditModel.cs" />
     <Compile Include="Models\UzytkownikRowModel.cs" />
@@ -269,6 +270,8 @@
     <Content Include="Views\Uzytkownicy\Delete.cshtml" />
     <Content Include="Views\Administracja\Index.cshtml" />
     <Content Include="Views\Administracja\UtworzBaze.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Int32.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\HiddenInput.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
