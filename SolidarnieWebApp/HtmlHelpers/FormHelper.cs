@@ -34,6 +34,7 @@ namespace SolidarnieWebApp.HtmlHelpers
 
                         writer.Write("<div class=\"col-md-10\">");
                         writer.Write(helper.Editor(prop1.Name, new { @class = "form-control" }).ToString());
+                        writer.Write(helper.ValidationMessage(prop1.Name, "", new { @class = "text-danger" }));
                         writer.Write("</div>");
                         writer.Write("</div>");
                     }
@@ -41,21 +42,6 @@ namespace SolidarnieWebApp.HtmlHelpers
 
                 }
             });
-
-
-            //using (helper.BeginForm())
-            //{
-
-            //    var tb = new TagBuilder("div");
-            //    tb.AddCssClass("mojdiv");
-
-            //    //var txt = new TagBuilder("h6");
-            //    //txt.SetInnerText("Nagłówek");
-
-            //    //tb.SetInnerText(txt.ToString());
-
-            //    return MvcHtmlString.Create(tb.ToString());
-            //}
         }
 
         private static bool Wyswietlac(PropertyInfo prop1)
