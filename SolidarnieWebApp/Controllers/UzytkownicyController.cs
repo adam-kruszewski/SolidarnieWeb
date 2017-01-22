@@ -71,11 +71,12 @@ namespace SolidarnieWebApp.Controllers
 
         private UzytkownikEditModel DajModelDoEdycji(int id)
         {
+            var view = uzytkownicyService.DajWgID(id);
             return new UzytkownikEditModel
             {
-                ID = 10,
-                Nazwa = "Użytkownik do edycji",
-                Email = "mail@mail.com"
+                ID = id,
+                Nazwa = view.Nazwa,
+                Email = view.Email
             };
         }
 
@@ -84,8 +85,18 @@ namespace SolidarnieWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                if (uzytkownicyService.Zmien(
+                    new ModyfikacjaUzytkownikaRequest
+                    {
+                        ID = form.ID,
+                        Email = form.Email,
+                        Nazwa = form.Nazwa
+                    }))
+                {
+                    return RedirectToAction("Index");
+                }
             }
+            ModelState.AddModelError("", "coś poszło nie tak przy aktualizacji");
 
             return View(form);
         }

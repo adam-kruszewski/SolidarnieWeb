@@ -112,7 +112,9 @@
     <Compile Include="Services\DodanieUzytkownikaRequest.cs" />
     <Compile Include="Services\Impl\UzytkownicyService.cs" />
     <Compile Include="Services\IUzytkownicyService.cs" />
+    <Compile Include="Services\ModyfikacjaUzytkownikaRequest.cs" />
     <Compile Include="UzytkownicyModule.cs" />
+    <Compile Include="Views\UzytkownikView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
