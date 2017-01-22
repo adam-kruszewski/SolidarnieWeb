@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
@@ -11,8 +12,10 @@ namespace SolidarnieWebApp.HtmlHelpers
     {
         public static HelperResult GenerujFormularz(
             this HtmlHelper helper,
+            string actionUrl,
             object model,
-            ViewDataDictionary viewData)
+            ViewDataDictionary viewData,
+            string akcjaAnuluj = null)
         {
             return new HelperResult(writer =>
             {
@@ -25,9 +28,9 @@ namespace SolidarnieWebApp.HtmlHelpers
                     writer.WriteLine(helper.ValidationSummary(true, "", new { @class = "text-danger" }));
 
                     writer.WriteLine(helper.GenerujEditorForObject(model, viewData).ToString());
+                    writer.WriteLine(helper.GenerujPrzyciskiFormularza(akcjaAnuluj));
 
                     writer.Write("</div>");
-
                 }
             });
         }
@@ -53,6 +56,58 @@ namespace SolidarnieWebApp.HtmlHelpers
                     writer.Write("</div>");
                 }
             });
+        }
+
+        public static MvcHtmlString GenerujPrzyciskiFormularza(
+            this HtmlHelper helper,
+            string akcjaAnuluj)
+        {
+            var tagBuilderFormGroup = new TagBuilder("div");
+            tagBuilderFormGroup.AddCssClass("form-group");
+
+            var tagBuilder = new TagBuilder("div");
+            tagBuilder.AddCssClass("col-md-offset-2");
+            tagBuilder.AddCssClass("col-md-10");
+
+            var przyciskiBuilder = new TagBuilder[2];
+
+            var builderZapisz = PrzygotujBuilderaPrzyciskuZapisz();
+
+            var builderAnuluj = PrzygotujBuilderaPrzyciskuAnuluj(akcjaAnuluj);
+
+            przyciskiBuilder[0] = builderZapisz;
+            przyciskiBuilder[1] = builderAnuluj;
+
+            var stringBuilder = new StringBuilder();
+            foreach (var builder in przyciskiBuilder)
+            {
+                stringBuilder.AppendLine(builder.ToString());
+            }
+            tagBuilder.InnerHtml = stringBuilder.ToString();
+
+            tagBuilderFormGroup.InnerHtml = tagBuilder.ToString();
+
+            return new MvcHtmlString(tagBuilderFormGroup.ToString());
+        }
+
+        private static TagBuilder PrzygotujBuilderaPrzyciskuAnuluj(string akcjaAnuluj)
+        {
+            var builderAnuluj = new TagBuilder("a");
+            builderAnuluj.Attributes.Add("href", akcjaAnuluj);
+            builderAnuluj.AddCssClass("btn");
+            builderAnuluj.AddCssClass("btn-default");
+            builderAnuluj.AddCssClass("btn-sm");
+            builderAnuluj.InnerHtml = "Anuluj";
+            return builderAnuluj;
+        }
+
+        private static TagBuilder PrzygotujBuilderaPrzyciskuZapisz()
+        {
+            var builderZapisz = new TagBuilder("input");
+            builderZapisz.Attributes.Add("type", "submit");
+            builderZapisz.Attributes.Add("value", "Zapisz");
+            builderZapisz.Attributes.Add("class", "btn btn-default btn-sm btn-primary");
+            return builderZapisz;
         }
 
         private static bool Wyswietlac(PropertyInfo prop1)
