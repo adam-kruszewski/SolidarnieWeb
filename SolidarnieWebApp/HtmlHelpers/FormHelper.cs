@@ -24,22 +24,33 @@ namespace SolidarnieWebApp.HtmlHelpers
 
                     writer.WriteLine(helper.ValidationSummary(true, "", new { @class = "text-danger" }));
 
-                    foreach (var prop1 in model.GetType().GetProperties())
-                    {
-                        writer.Write("<div class=\"form-group\">");
-                        //if ()
-                        var b = WyswietlacLabel(prop1.Name, viewData);
-                        if (Wyswietlac(prop1))
-                            writer.Write(helper.Label(prop1.Name, new { @class = "control-label col-md-2" }).ToString());
+                    writer.WriteLine(helper.GenerujEditorForObject(model, viewData).ToString());
 
-                        writer.Write("<div class=\"col-md-10\">");
-                        writer.Write(helper.Editor(prop1.Name, new { @class = "form-control" }).ToString());
-                        writer.Write(helper.ValidationMessage(prop1.Name, "", new { @class = "text-danger" }));
-                        writer.Write("</div>");
-                        writer.Write("</div>");
-                    }
                     writer.Write("</div>");
 
+                }
+            });
+        }
+
+        public static HelperResult GenerujEditorForObject(
+            this HtmlHelper helper,
+            object model,
+            ViewDataDictionary viewData)
+        {
+            return new HelperResult(writer =>
+            {
+                foreach (var prop1 in model.GetType().GetProperties())
+                {
+                    writer.Write("<div class=\"form-group\">");
+                    var b = WyswietlacLabel(prop1.Name, viewData);
+                    if (Wyswietlac(prop1))
+                        writer.Write(helper.Label(prop1.Name, new { @class = "control-label col-md-2" }).ToString());
+
+                    writer.Write("<div class=\"col-md-10\">");
+                    writer.Write(helper.Editor(prop1.Name, new { @class = "form-control" }).ToString());
+                    writer.Write(helper.ValidationMessage(prop1.Name, "", new { @class = "text-danger" }));
+                    writer.Write("</div>");
+                    writer.Write("</div>");
                 }
             });
         }
