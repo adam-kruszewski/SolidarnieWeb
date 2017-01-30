@@ -1,12 +1,9 @@
 ﻿using Kruchy.NHibernate.Provider;
-using Kruchy.NInject.Adapter.Ladowanie;
 using Kruchy.NInject.Adapter.Testy;
-using Kruchy.Testy;
 using Kruchy.Testy.NHibernateProvider;
-using Kruchy.Testy.Utils;
 using NUnit.Framework;
 
-namespace Kruchy.Uzytkownicy.Tests
+namespace Kruchy.Testy
 {
     [SetUpFixture]
     public class SetUpFixture
@@ -14,10 +11,12 @@ namespace Kruchy.Uzytkownicy.Tests
         [OneTimeSetUp]
         public void RunBeforeAnyTests()
         {
-            Injector.Instancja.LoadOnce<UzytkownicyModule>();
-            Injector.Instancja.LoadOnce<TestyModule>();
-
-            InicjalizacjaSrodowiskaTestowego.Inicjuj(Injector.Instancja);
+            Injector.Instancja.Unbind<IHibernateSessionProvider>();
+            Injector
+                .Instancja
+                    .Bind<IHibernateSessionProvider>()
+                        .To<NHibernateTestowyProvider>()
+                            .InScope(ctx => TestContext.CurrentContext.Test.FullName);
         }
 
         [OneTimeTearDown]

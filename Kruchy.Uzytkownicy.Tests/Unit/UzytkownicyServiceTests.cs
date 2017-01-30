@@ -1,29 +1,22 @@
 ﻿using FluentAssertions;
+using Kruchy.NHibernate.Provider;
 using Kruchy.NInject.Adapter.Testy;
-using Kruchy.Uzytkownicy.Domain;
+using Kruchy.Testy.Szablony;
 using Kruchy.Uzytkownicy.Services;
-using NHibernate.Cfg;
-using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
 
 namespace Kruchy.Uzytkownicy.Tests.Unit
 {
     [TestFixture]
-    public class UzytkownicyServiceTests
+    public class UzytkownicyServiceTests : TestyZSqlitemInMemory
     {
         private IUzytkownicyService service;
 
         [SetUp]
-        public void SetUpEachTest()
+        public override void SetUpEachTest()
         {
+            base.SetUpEachTest();
             service = Injector.Instancja.Pobierz<IUzytkownicyService>();
-
-            var cfg = new Configuration();
-
-            cfg.Configure();
-
-            cfg.AddAssembly(typeof(Uzytkownik).Assembly);
-            new SchemaExport(cfg).Execute(true, true, false);
         }
 
         [Test]
