@@ -13,7 +13,7 @@ namespace Kruchy.NHibernate.RejestracjaAssembly
             listaAssembly.Add(assembly);
         }
 
-        internal static IList<Assembly> DajZarejestrowaneAssembly()
+        public static IList<Assembly> DajZarejestrowaneAssembly()
         {
             return listaAssembly.ToList();
         }
