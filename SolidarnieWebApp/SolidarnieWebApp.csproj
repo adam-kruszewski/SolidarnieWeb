@@ -220,6 +220,7 @@
     <Compile Include="Models\UzytkownikEditModel.cs" />
     <Compile Include="Models\UzytkownikRowModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Walidacja\ControllerExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -286,6 +287,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kruchy.Model.DataTypes\Kruchy.Model.DataTypes.csproj">
+      <Project>{58E70E0E-B135-4D4A-9AA9-A56911739859}</Project>
+      <Name>Kruchy.Model.DataTypes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kruchy.NHibernate\Kruchy.NHibernate.csproj">
       <Project>{bbf4f787-0d49-477e-b857-556d87c6e305}</Project>
       <Name>Kruchy.NHibernate</Name>
