@@ -136,6 +136,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kruchy.Model.DataTypes\Kruchy.Model.DataTypes.csproj">
+      <Project>{58e70e0e-b135-4d4a-9aa9-a56911739859}</Project>
+      <Name>Kruchy.Model.DataTypes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kruchy.NHibernate\Kruchy.NHibernate.csproj">
       <Project>{BBF4F787-0D49-477E-B857-556D87C6E305}</Project>
       <Name>Kruchy.NHibernate</Name>

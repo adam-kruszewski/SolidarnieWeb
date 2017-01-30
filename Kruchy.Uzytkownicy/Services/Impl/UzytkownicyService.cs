@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Kruchy.Model.DataTypes.Walidacja;
 using Kruchy.NHibernate.Provider;
 using Kruchy.Uzytkownicy.Domain;
 using Kruchy.Uzytkownicy.Views;
@@ -37,7 +38,9 @@ namespace Kruchy.Uzytkownicy.Services.Impl
             return sesja.QueryOver<Uzytkownik>().List();
         }
 
-        public Uzytkownik Dodaj(DodanieUzytkownikaRequest request)
+        public Uzytkownik Dodaj(
+            DodanieUzytkownikaRequest request,
+            IWalidacjaListener listener)
         {
             var sesja = sessionProvider.DajSesje();
 

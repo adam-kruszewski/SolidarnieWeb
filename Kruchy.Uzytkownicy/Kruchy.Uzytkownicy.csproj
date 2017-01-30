@@ -115,6 +115,8 @@
     <Compile Include="Services\ModyfikacjaUzytkownikaRequest.cs" />
     <Compile Include="UzytkownicyModule.cs" />
     <Compile Include="Views\UzytkownikView.cs" />
+    <Compile Include="Walidacja\Impl\WalidacjaUzytkownika.cs" />
+    <Compile Include="Walidacja\IWalidacjaUzytkownika.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -143,6 +145,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kruchy.Model.DataTypes\Kruchy.Model.DataTypes.csproj">
+      <Project>{58e70e0e-b135-4d4a-9aa9-a56911739859}</Project>
+      <Name>Kruchy.Model.DataTypes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kruchy.NHibernate\Kruchy.NHibernate.csproj">
       <Project>{bbf4f787-0d49-477e-b857-556d87c6e305}</Project>
       <Name>Kruchy.NHibernate</Name>

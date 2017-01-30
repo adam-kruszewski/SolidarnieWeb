@@ -2,6 +2,7 @@
 using Kruchy.NHibernate.Provider;
 using Kruchy.NInject.Adapter.Testy;
 using Kruchy.Testy.Szablony;
+using Kruchy.Testy.Walidacja;
 using Kruchy.Uzytkownicy.Services;
 using NUnit.Framework;
 
@@ -31,7 +32,8 @@ namespace Kruchy.Uzytkownicy.Tests.Unit
             };
 
             //act
-            var uzytkownik = service.Dodaj(request);
+            var listenerWalidacji = new MockListeneraWalidacji();
+            var uzytkownik = service.Dodaj(request, listenerWalidacji);
 
             //assert
             uzytkownik.ID.Should().BeGreaterThan(0);

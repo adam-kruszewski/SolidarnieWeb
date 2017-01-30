@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using Kruchy.Uzytkownicy.Domain;
 using Kruchy.Uzytkownicy.Services;
 using SolidarnieWebApp.Models;
+using SolidarnieWebApp.Walidacja;
 
 namespace SolidarnieWebApp.Controllers
 {
@@ -47,20 +48,20 @@ namespace SolidarnieWebApp.Controllers
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("", "Coś poszło nie tak");
-                return View(form);
             }
             else
             {
-                uzytkownicyService
-                    .Dodaj(
+                if (uzytkownicyService.Dodaj(
                         new DodanieUzytkownikaRequest
                         {
                             Nazwa = form.Nazwa,
                             Email = form.Email,
                             Haslo = "123"
-                        });
-                return RedirectToAction("Index");
+                        },
+                        this.DajListeneraWalidacji()) != null)
+                    return RedirectToAction("Index");
             }
+            return View(form);
         }
 
         public ActionResult Edit(int id)
