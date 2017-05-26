@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Kruchy.Model.DataTypes.Walidacja;
-using Kruchy.NHibernate.Provider;
 using Kruchy.NHibernate.Repositories;
 using Kruchy.Uzytkownicy.Domain;
 using Kruchy.Uzytkownicy.Views;
@@ -9,16 +8,11 @@ namespace Kruchy.Uzytkownicy.Services.Impl
 {
     class UzytkownicyService : IUzytkownicyService
     {
-        private static List<Uzytkownik> wszystkie = new List<Uzytkownik>();
-
-        private readonly IHibernateSessionProvider sessionProvider;
         private readonly NHibernateRepository<Uzytkownik> repository;
 
         public UzytkownicyService(
-            IHibernateSessionProvider sessionProvider,
             NHibernateRepository<Uzytkownik> repository)
         {
-            this.sessionProvider = sessionProvider;
             this.repository = repository;
         }
 
@@ -37,8 +31,7 @@ namespace Kruchy.Uzytkownicy.Services.Impl
 
         public IList<Uzytkownik> SzukajWszystkich()
         {
-            var sesja = sessionProvider.DajSesje();
-            return sesja.QueryOver<Uzytkownik>().List();
+            return repository.GetAll();
         }
 
         public Uzytkownik Dodaj(
