@@ -18,16 +18,21 @@ namespace Kruchy.NHibernate.Repositories
             return session.Get<T>(id);
         }
 
-        public virtual object Save(object o)
+        public virtual T Save(T o)
         {
             var session = sessionProvider.DajSesje();
-            return session.Save(o);
+            return (T)session.Save(o);
         }
 
-        public virtual void Update(object o)
+        public virtual void Update(T o)
         {
             var session = sessionProvider.DajSesje();
             session.Update(o);
+        }
+
+        public void Flush()
+        {
+            sessionProvider.DajSesje().Flush();
         }
     }
 }

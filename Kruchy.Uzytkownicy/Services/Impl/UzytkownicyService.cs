@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Kruchy.Model.DataTypes.Walidacja;
 using Kruchy.NHibernate.Provider;
+using Kruchy.NHibernate.Repositories;
 using Kruchy.Uzytkownicy.Domain;
 using Kruchy.Uzytkownicy.Views;
 
@@ -11,22 +12,24 @@ namespace Kruchy.Uzytkownicy.Services.Impl
         private static List<Uzytkownik> wszystkie = new List<Uzytkownik>();
 
         private readonly IHibernateSessionProvider sessionProvider;
+        private readonly NHibernateRepository<Uzytkownik> repository;
 
         public UzytkownicyService(
-            IHibernateSessionProvider sessionProvider)
+            IHibernateSessionProvider sessionProvider,
+            NHibernateRepository<Uzytkownik> repository)
         {
             this.sessionProvider = sessionProvider;
+            this.repository = repository;
         }
 
         public UzytkownikView DajWgID(int id)
         {
-            var sesja = sessionProvider.DajSesje();
-            var uzytkwownik = sesja.Get<Uzytkownik>(id);
+            var uzytkownik = repository.Get(id);
 
             var view = new UzytkownikView
             {
-                Email = uzytkwownik.Email,
-                Nazwa = uzytkwownik.Nazwa
+                Email = uzytkownik.Email,
+                Nazwa = uzytkownik.Nazwa
             };
 
             return view;
@@ -42,8 +45,6 @@ namespace Kruchy.Uzytkownicy.Services.Impl
             DodanieUzytkownikaRequest request,
             IWalidacjaListener listener)
         {
-            var sesja = sessionProvider.DajSesje();
-
             var nowy = new Uzytkownik
             {
                 Nazwa = request.Nazwa,
@@ -51,23 +52,19 @@ namespace Kruchy.Uzytkownicy.Services.Impl
                 Haslo = request.Haslo
             };
 
-            sesja.Save(nowy);
-            return nowy;
+            return repository.Save(nowy);
         }
 
         public bool Zmien(ModyfikacjaUzytkownikaRequest request)
         {
-            using (var sesja = sessionProvider.DajSesje())
-            {
-                var uzytkownik = sesja.Get<Uzytkownik>(request.ID);
+            var uzytkownik = repository.Get(request.ID);
 
-                uzytkownik.Nazwa = request.Nazwa;
-                uzytkownik.Email = request.Email;
+            uzytkownik.Nazwa = request.Nazwa;
+            uzytkownik.Email = request.Email;
 
-                sesja.Update(uzytkownik);
-                sesja.Flush();
-                return true;
-            }
+            repository.Update(uzytkownik);
+            repository.Flush();
+            return true;
         }
     }
 }
