@@ -70,6 +70,7 @@
     <Compile Include="Provider\HibernateSessionProvider.cs" />
     <Compile Include="Provider\IHibernateSessionProvider.cs" />
     <Compile Include="RejestracjaAssembly\RejestratorAssembly.cs" />
+    <Compile Include="Repositories\NHibernateRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
