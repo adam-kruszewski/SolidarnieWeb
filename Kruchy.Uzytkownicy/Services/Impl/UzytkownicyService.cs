@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using Kruchy.Model.DataTypes.Walidacja;
-using Kruchy.NHibernate.Repositories;
 using Kruchy.Uzytkownicy.Domain;
+using Kruchy.Uzytkownicy.Repositories;
 using Kruchy.Uzytkownicy.Views;
 
 namespace Kruchy.Uzytkownicy.Services.Impl
 {
     class UzytkownicyService : IUzytkownicyService
     {
-        private readonly NHibernateRepository<Uzytkownik> repository;
+        private readonly IUzytkownikRepository repository;
 
         public UzytkownicyService(
-            NHibernateRepository<Uzytkownik> repository)
+            IUzytkownikRepository repository)
         {
             this.repository = repository;
         }

@@ -109,6 +109,8 @@
   <ItemGroup>
     <Compile Include="Domain\Uzytkownik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Impl\UzytkownikRepository.cs" />
+    <Compile Include="Repositories\IUzytkownikRepository.cs" />
     <Compile Include="Services\DodanieUzytkownikaRequest.cs" />
     <Compile Include="Services\Impl\UzytkownicyService.cs" />
     <Compile Include="Services\IUzytkownicyService.cs" />
