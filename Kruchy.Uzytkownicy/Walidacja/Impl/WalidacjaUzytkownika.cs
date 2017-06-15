@@ -1,5 +1,4 @@
-﻿using System;
-using Kruchy.Model.DataTypes.Walidacja;
+﻿using Kruchy.Model.DataTypes.Walidacja;
 using Kruchy.Uzytkownicy.Domain;
 
 namespace Kruchy.Uzytkownicy.Walidacja.Impl
