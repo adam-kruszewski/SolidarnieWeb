@@ -48,6 +48,14 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentAssertions, Version=4.19.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.19.2\lib\net45\FluentAssertions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=4.19.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.19.2\lib\net45\FluentAssertions.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
       <Private>True</Private>
@@ -78,6 +86,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buildery\NHibernateBuilder.cs" />
     <Compile Include="InicjalizujaceFixtury\FixturaInicjalizujacaBazeDanych.cs" />
     <Compile Include="InicjalizujaceFixtury\IInicjalizujacaFixtura.cs" />
     <Compile Include="NHibernateProvider\NHibernateTestowyProvider.cs" />
@@ -87,6 +96,7 @@
     <Compile Include="TestyModule.cs" />
     <Compile Include="Utils\InicjalizacjaSrodowiskaTestowego.cs" />
     <Compile Include="Walidacja\MockListeneraWalidacji.cs" />
+    <Compile Include="Walidacja\MockListeneraWalidacjiExtension.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
