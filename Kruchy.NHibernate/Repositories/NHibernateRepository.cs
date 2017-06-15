@@ -3,7 +3,7 @@ using Kruchy.NHibernate.Provider;
 
 namespace Kruchy.NHibernate.Repositories
 {
-    public class NHibernateRepository<T>
+    public class NHibernateRepository<T> : INHibernateRepository<T>
         where T : class
     {
         private readonly IHibernateSessionProvider sessionProvider;
