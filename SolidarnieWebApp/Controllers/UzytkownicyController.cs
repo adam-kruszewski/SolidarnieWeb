@@ -47,7 +47,6 @@ namespace SolidarnieWebApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Coś poszło nie tak");
             }
             else
             {
@@ -92,13 +91,12 @@ namespace SolidarnieWebApp.Controllers
                         ID = form.ID,
                         Email = form.Email,
                         Nazwa = form.Nazwa
-                    }))
+                    },
+                    this.DajListeneraWalidacji()))
                 {
                     return RedirectToAction("Index");
                 }
             }
-            ModelState.AddModelError("", "coś poszło nie tak przy aktualizacji");
-
             return View(form);
         }
 

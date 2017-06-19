@@ -13,14 +13,14 @@ namespace Kruchy.Uzytkownicy.Repositories.Impl
         {
         }
 
-        public bool IstniejeWgNazwy(string nazwa)
+        public Uzytkownik SzukajWgNazwy(string nazwa)
         {
             return
                 Session
                     .CreateCriteria<Uzytkownik>()
                     .Add(Restrictions.Eq("Nazwa", nazwa))
                     .List<Uzytkownik>()
-                    .Any();
+                    .SingleOrDefault();
         }
     }
 }

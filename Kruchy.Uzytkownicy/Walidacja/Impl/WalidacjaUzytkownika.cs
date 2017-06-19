@@ -1,5 +1,4 @@
-﻿using System;
-using Kruchy.Model.DataTypes.Walidacja;
+﻿using Kruchy.Model.DataTypes.Walidacja;
 using Kruchy.Uzytkownicy.Domain;
 using Kruchy.Uzytkownicy.Repositories;
 
@@ -20,15 +19,16 @@ namespace Kruchy.Uzytkownicy.Walidacja.Impl
             return
                 new ZbiorRegulWalidacji()
                     .DodajReguleBledu(
-                        () => IstniejeWgNazwy(uzytkownik.Nazwa),
+                        () => IstniejeWgNazwy(uzytkownik.Nazwa, uzytkownik.ID),
                         "Użytkownik o takiej nazwie już istnieje",
                         "Nazwa")
                     .Wykonaj(listener);
         }
 
-        private bool IstniejeWgNazwy(string nazwa)
+        private bool IstniejeWgNazwy(string nazwa, int id)
         {
-            return uzytkownikRepository.IstniejeWgNazwy(nazwa);
+            var uzytkownik = uzytkownikRepository.SzukajWgNazwy(nazwa);
+            return uzytkownik != null && uzytkownik.ID != id;
         }
     }
 }

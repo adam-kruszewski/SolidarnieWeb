@@ -9,8 +9,12 @@ namespace Kruchy.Uzytkownicy.Services
     {
         UzytkownikView DajWgID(int id);
 
-        Uzytkownik Dodaj(DodanieUzytkownikaRequest request, IWalidacjaListener listener);
-        bool Zmien(ModyfikacjaUzytkownikaRequest request);
+        Uzytkownik Dodaj(
+            DodanieUzytkownikaRequest request,
+            IWalidacjaListener listener);
+        bool Zmien(
+            ModyfikacjaUzytkownikaRequest request,
+            IWalidacjaListener listener);
         IList<Uzytkownik> SzukajWszystkich();
     }
 }

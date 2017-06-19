@@ -1,4 +1,5 @@
-﻿using Kruchy.NInject.Adapter.Testy;
+﻿using FluentAssertions;
+using Kruchy.NInject.Adapter.Testy;
 using Kruchy.Testy.Szablony;
 using Kruchy.Testy.Walidacja;
 using Kruchy.Uzytkownicy.Tests.Builders;
@@ -48,6 +49,21 @@ namespace Kruchy.Uzytkownicy.Tests.Unit
             listenerWalidacji.ZawieraBladDlaWlasciwosci(
                 "Użytkownik o takiej nazwie już istnieje",
                 "Nazwa");
+        }
+
+        [Test]
+        public void PrzepuszczaJeśliNieZmienioneDane()
+        {
+            //arrange
+            var uzytkownik = new UzytkownikBuilder().ZNazwa("nazwa").Save();
+            var listenerWalidacji = new MockListeneraWalidacji();
+
+            //act
+            var wynik = walidacja.Waliduj(uzytkownik, listenerWalidacji);
+
+            //assert
+            wynik.Should().BeTrue();
+            listenerWalidacji.NieZawieraBledu();
         }
     }
 }
