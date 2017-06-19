@@ -14,22 +14,24 @@ namespace Kruchy.Model.DataTypes.Walidacja
             regulyOstrzezen = new List<RegulaWalidacji>();
         }
 
-        public void DodajReguleBledu(
+        public ZbiorRegulWalidacji DodajReguleBledu(
             Func<bool> funkcjaWarunku,
             string komunikat,
             string wlasciwosc)
         {
             regulyBledow.Add(
                 new RegulaWalidacji(funkcjaWarunku, komunikat, wlasciwosc));
+            return this;
         }
 
-        public void DodajReguleOstrzezenia(
+        public ZbiorRegulWalidacji DodajReguleOstrzezenia(
             Func<bool> funkcjaWarunku,
             string komunikat,
             string wlasciwosc)
         {
             regulyOstrzezen.Add(
                 new RegulaWalidacji(funkcjaWarunku, komunikat, wlasciwosc));
+            return this;
         }
 
         public bool Wykonaj(IWalidacjaListener listener)
