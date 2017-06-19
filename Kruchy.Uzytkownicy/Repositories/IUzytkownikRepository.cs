@@ -5,5 +5,6 @@ namespace Kruchy.Uzytkownicy.Repositories
 {
     interface IUzytkownikRepository :INHibernateRepository<Uzytkownik>
     {
+        bool IstniejeWgNazwy(string nazwa);
     }
 }

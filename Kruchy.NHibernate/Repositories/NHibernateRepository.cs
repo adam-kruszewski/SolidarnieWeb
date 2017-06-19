@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Kruchy.NHibernate.Provider;
+using NHibernate;
 
 namespace Kruchy.NHibernate.Repositories
 {
@@ -7,6 +8,8 @@ namespace Kruchy.NHibernate.Repositories
         where T : class
     {
         private readonly IHibernateSessionProvider sessionProvider;
+
+        protected ISession Session { get { return sessionProvider.DajSesje(); } }
 
         public NHibernateRepository(
             IHibernateSessionProvider sessionProvider)

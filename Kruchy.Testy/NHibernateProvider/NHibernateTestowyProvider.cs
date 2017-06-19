@@ -68,7 +68,7 @@ namespace Kruchy.Testy.NHibernateProvider
             var builder =
                 Fluently
                     .Configure()
-                        .Database(SQLiteConfiguration.Standard.InMemory);
+                        .Database(SQLiteConfiguration.Standard.InMemory().ShowSql);
 
             foreach (var assembly in RejestratorAssembly.DajZarejestrowaneAssembly())
                 builder.Mappings(m => m.HbmMappings.AddFromAssembly(assembly));
