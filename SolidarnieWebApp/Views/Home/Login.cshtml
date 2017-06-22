@@ -1,0 +1,11 @@
+@using SolidarnieWebApp.HtmlHelpers;
+@model SolidarnieWebApp.Models.LoginModel
+
+@{
+    ViewBag.Title = "Logowanie";
+}
+
+<h2>Zaloguj</h2>
+
+@Html.GenerujFormularz(Url.Action("Login"), Model, ViewData, Url.Action("Index"))
+

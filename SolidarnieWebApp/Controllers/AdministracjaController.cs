@@ -3,6 +3,7 @@ using Kruchy.NHibernate.Provider;
 
 namespace SolidarnieWebApp.Controllers
 {
+    [Authorize(Roles = "User")]
     public class AdministracjaController : Controller
     {
         private readonly IHibernateSessionProvider sessionProvider;
@@ -25,6 +26,5 @@ namespace SolidarnieWebApp.Controllers
             ViewBag.Komunikat = "Utworzono bazę danych";
             return View();
         }
-
     }
 }

@@ -23,6 +23,14 @@
                     <li>@Html.ActionLink("Zarządzanie użytkownikami", "Index", "Uzytkownicy")</li>
                     <li>@Html.ActionLink("Administracja", "Index", "Administracja")</li>
                 </ul>
+                <div class="pull-right">
+                    <div class="btn-group">
+                        @Html.Action("ButtonLogowania", "Home")
+                        @*<a class="btn-default btn-lg" href="@Url.Action("Login", "Home")">
+                            Zaloguj
+                        </a>*@
+                    </div>
+                </div>
             </div>
         </div>
     </div>
