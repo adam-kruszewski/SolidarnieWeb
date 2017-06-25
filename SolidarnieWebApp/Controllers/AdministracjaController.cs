@@ -1,9 +1,11 @@
 ﻿using System.Web.Mvc;
 using Kruchy.NHibernate.Provider;
+using SolidarnieWebApp.Authentication;
 
 namespace SolidarnieWebApp.Controllers
 {
-    [Authorize(Roles = "User")]
+    //[Authorize(Roles = "User")]
+    [WymagaLogowania]
     public class AdministracjaController : Controller
     {
         private readonly IHibernateSessionProvider sessionProvider;

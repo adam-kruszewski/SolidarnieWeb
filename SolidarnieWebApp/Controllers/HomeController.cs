@@ -31,6 +31,7 @@ namespace SolidarnieWebApp.Controllers
                 //var ident = new ClaimsIdentity(
                 //      PrzygotujClaims(model),
                 //    DefaultAuthenticationTypes.ApplicationCookie);
+                //var ident = new ClaimsIdentity(PrzygotujClaims(model));
 
                 //HttpContext.GetOwinContext().Authentication.SignIn(
                 //   new AuthenticationProperties { IsPersistent = false }, ident);
