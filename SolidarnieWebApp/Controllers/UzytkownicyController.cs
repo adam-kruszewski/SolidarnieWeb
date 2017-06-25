@@ -58,7 +58,8 @@ namespace SolidarnieWebApp.Controllers
                         {
                             Nazwa = form.Nazwa,
                             Email = form.Email,
-                            Haslo = "123"
+                            Haslo = form.Haslo,
+                            PowtorzenieHasla = form.PowtorzenieHasla
                         },
                         this.DajListeneraWalidacji()) != null)
                     return RedirectToAction("Index");
@@ -93,7 +94,9 @@ namespace SolidarnieWebApp.Controllers
                     {
                         ID = form.ID,
                         Email = form.Email,
-                        Nazwa = form.Nazwa
+                        Nazwa = form.Nazwa,
+                        Haslo = form.Haslo,
+                        PowtorzenieHasla = form.PowtorzenieHasla
                     },
                     this.DajListeneraWalidacji()))
                 {

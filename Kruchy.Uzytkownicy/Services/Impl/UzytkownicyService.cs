@@ -61,6 +61,8 @@ namespace Kruchy.Uzytkownicy.Services.Impl
             var uzytkownik = DajUzytkownikaWgRequestDodawania(request);
             if (!walidacjaUzytkownika.Waliduj(uzytkownik, listener))
                 return null;
+            if (!ZgodneHasla(request, listener))
+                return null;
 
             var nowy = new Uzytkownik
             {
@@ -92,12 +94,26 @@ namespace Kruchy.Uzytkownicy.Services.Impl
 
             uzytkownik.Nazwa = request.Nazwa;
             uzytkownik.Email = request.Email;
+            uzytkownik.Haslo = request.Haslo;
             if (!walidacjaUzytkownika.Waliduj(uzytkownik, listener))
+                return false;
+            if (!ZgodneHasla(request, listener))
                 return false;
 
             repository.Update(uzytkownik);
             repository.Flush();
             return true;
+        }
+
+        private bool ZgodneHasla(
+            DodanieUzytkownikaRequest request,
+            IWalidacjaListener listener)
+        {
+            return
+                new ZbiorRegulWalidacji()
+                    .DodajReguleBledu(() =>
+                    request.Haslo != request.PowtorzenieHasla, "Niezgodne hasła", "Haslo")
+                        .Wykonaj(listener);
         }
     }
 }
