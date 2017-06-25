@@ -1,12 +1,15 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using System.Web.Mvc.Filters;
 using Kruchy.Uzytkownicy.Domain;
 using Kruchy.Uzytkownicy.Services;
+using SolidarnieWebApp.Authentication;
 using SolidarnieWebApp.Models;
 using SolidarnieWebApp.Walidacja;
 
 namespace SolidarnieWebApp.Controllers
 {
+    [WymagaLogowania]
     public class UzytkownicyController : Controller
     {
         private readonly IUzytkownicyService uzytkownicyService;

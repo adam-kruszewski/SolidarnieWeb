@@ -1,15 +1,25 @@
 ﻿using System;
+using System.IO;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security;
+using Kruchy.Uzytkownicy.Services;
+using Kruchy.Uzytkownicy.Views;
+using Newtonsoft.Json;
 using SolidarnieWebApp.Models;
 
 namespace SolidarnieWebApp.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IUzytkownicyService uzytkownicyService;
+
+        public HomeController(
+            IUzytkownicyService uzytkownicyService)
+        {
+            this.uzytkownicyService = uzytkownicyService;
+        }
+
         public ActionResult Index()
         {
             return View(model: new UzytkownikEditModel());
@@ -26,7 +36,11 @@ namespace SolidarnieWebApp.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {
-            if (model.Haslo == "aaa")
+            var uzytkownik =
+                uzytkownicyService
+                    .SzukajWgNazwyHasla(model.Uzytkownik, model.Haslo);
+
+            if (uzytkownik != null)
             {
                 //var ident = new ClaimsIdentity(
                 //      PrzygotujClaims(model),
@@ -35,11 +49,20 @@ namespace SolidarnieWebApp.Controllers
 
                 //HttpContext.GetOwinContext().Authentication.SignIn(
                 //   new AuthenticationProperties { IsPersistent = false }, ident);
-                HttpContext.Response.Cookies.Add(new HttpCookie("solidarnie", "zakupy"));
+                HttpContext.Response.Cookies.Add(
+                    new HttpCookie("solidarnie", PrzygotujTrescCookie(uzytkownik)));
                 return RedirectToAction("Index");
             }
             ModelState.AddModelError("", "Błędna nazwa użytkownika lub hasło");
             return View(model);
+        }
+
+        private string PrzygotujTrescCookie(ZalogowanyUzytkownikView uzytkownik)
+        {
+            var writer = new StringWriter();
+            new JsonSerializer().Serialize(writer, uzytkownik);
+
+            return writer.ToString();
         }
 
         public PartialViewResult ButtonLogowania()

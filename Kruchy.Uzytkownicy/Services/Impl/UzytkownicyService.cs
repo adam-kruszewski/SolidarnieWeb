@@ -38,6 +38,22 @@ namespace Kruchy.Uzytkownicy.Services.Impl
             return repository.GetAll();
         }
 
+        public ZalogowanyUzytkownikView SzukajWgNazwyHasla(
+            string nazwa,
+            string haslo)
+        {
+            var uzytkownik = repository.SzukajWgNazwy(nazwa);
+            if (uzytkownik == null || uzytkownik.Haslo != haslo)
+                return null;
+
+            return new ZalogowanyUzytkownikView
+            {
+                ID = uzytkownik.ID,
+                Nazwa = uzytkownik.Nazwa,
+                Email = uzytkownik.Email
+            };
+        }
+
         public Uzytkownik Dodaj(
             DodanieUzytkownikaRequest request,
             IWalidacjaListener listener)
