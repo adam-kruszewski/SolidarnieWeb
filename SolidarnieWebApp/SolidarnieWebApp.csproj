@@ -230,6 +230,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Authentication\WymagaLogowaniaAttribute.cs" />
     <Compile Include="Controllers\AdministracjaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UzytkownicyController.cs" />
@@ -300,6 +301,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\ButtonZaloguj.cshtml" />
     <Content Include="Views\Home\ButtonWyloguj.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Haslo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

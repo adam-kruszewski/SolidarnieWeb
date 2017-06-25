@@ -1,4 +1,5 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace SolidarnieWebApp.Models
@@ -7,6 +8,7 @@ namespace SolidarnieWebApp.Models
     {
         public string Uzytkownik { get; set; }
 
+        [UIHint("Haslo")]
         public string Haslo { get; set; }
 
         [HiddenInput(DisplayValue = false)]
