@@ -233,6 +233,7 @@
     <Compile Include="Authentication\WymagaLogowaniaAttribute.cs" />
     <Compile Include="Controllers\AdministracjaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogowanieController.cs" />
     <Compile Include="Controllers\UzytkownicyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -298,10 +299,10 @@
     <Content Include="Views\Shared\EditorTemplates\Int32.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\HiddenInput.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\ButtonZaloguj.cshtml" />
-    <Content Include="Views\Home\ButtonWyloguj.cshtml" />
+    <Content Include="Views\Logowanie\ButtonZaloguj.cshtml" />
+    <Content Include="Views\Logowanie\ButtonWyloguj.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Haslo.cshtml" />
+    <Content Include="Views\Logowanie\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
