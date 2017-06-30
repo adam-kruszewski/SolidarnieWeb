@@ -1,0 +1,11 @@
+@using SolidarnieWebApp.HtmlHelpers;
+
+@model SolidarnieWebApp.Models.ZamowienieModel
+
+@{
+    ViewBag.Title = "Dodawanie zamówienia";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@Html.GenerujFormularz("Create", "ZamowienieForm", Model, Url.Action("Index", "Home"))

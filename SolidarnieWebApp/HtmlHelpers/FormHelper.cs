@@ -12,14 +12,14 @@ namespace SolidarnieWebApp.HtmlHelpers
     {
         public static HelperResult GenerujFormularz(
             this HtmlHelper helper,
-            string actionUrl,
+            string actionName,
+            string controllerName,
             object model,
-            ViewDataDictionary viewData,
             string akcjaAnuluj = null)
         {
             return new HelperResult(writer =>
             {
-                using (helper.BeginForm())
+            using (helper.BeginForm(actionName, controllerName, FormMethod.Post))
                 {
                     helper.AntiForgeryToken();
                     writer.WriteLine("<div class=\"form-horizontal\">");
@@ -27,7 +27,7 @@ namespace SolidarnieWebApp.HtmlHelpers
 
                     writer.WriteLine(helper.ValidationSummary(true, "", new { @class = "text-danger" }));
 
-                    writer.WriteLine(helper.GenerujEditorForObject(model, viewData).ToString());
+                    writer.WriteLine(helper.GenerujEditorForObject(model).ToString());
                     writer.WriteLine(helper.GenerujPrzyciskiFormularza(akcjaAnuluj));
 
                     writer.Write("</div>");
@@ -37,15 +37,14 @@ namespace SolidarnieWebApp.HtmlHelpers
 
         public static HelperResult GenerujEditorForObject(
             this HtmlHelper helper,
-            object model,
-            ViewDataDictionary viewData)
+            object model)
         {
             return new HelperResult(writer =>
             {
                 foreach (var prop1 in model.GetType().GetProperties())
                 {
                     writer.Write("<div class=\"form-group\">");
-                    var b = WyswietlacLabel(prop1.Name, viewData);
+                    var b = WyswietlacLabel(prop1.Name, helper.ViewData);
                     if (Wyswietlac(prop1))
                         writer.Write(helper.Label(prop1.Name, new { @class = "control-label col-md-2" }).ToString());
 
