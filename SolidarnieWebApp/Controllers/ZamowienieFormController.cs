@@ -17,7 +17,7 @@ namespace SolidarnieWebApp.Controllers
         [HttpPost]
         public ActionResult Create(ZamowienieModel form, HttpPostedFileBase excel)
         {
-            return View();
+            return View(form);
         }
     }
 }

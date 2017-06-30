@@ -19,7 +19,8 @@ namespace SolidarnieWebApp.HtmlHelpers
         {
             return new HelperResult(writer =>
             {
-            using (helper.BeginForm(actionName, controllerName, FormMethod.Post))
+            using (helper.BeginForm(actionName, controllerName, FormMethod.Post,
+                             new { enctype = "multipart/form-data" }))
                 {
                     helper.AntiForgeryToken();
                     writer.WriteLine("<div class=\"form-horizontal\">");
