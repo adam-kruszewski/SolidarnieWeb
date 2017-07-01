@@ -77,5 +77,10 @@ namespace Kruchy.Testy.NHibernateProvider
 
             return konfiguracja;
         }
+
+        public void AktualizujBaze()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

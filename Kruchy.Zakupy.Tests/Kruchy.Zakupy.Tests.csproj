@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6F242181-679C-464E-8E3D-CCBF9B26D2D2}</ProjectGuid>
+    <ProjectGuid>{0F41B922-0B4E-4A8D-BB17-E58434E0E7EC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kruchy.Zakupy</RootNamespace>
-    <AssemblyName>Kruchy.Zakupy</AssemblyName>
+    <RootNamespace>Kruchy.Zakupy.Tests</RootNamespace>
+    <AssemblyName>Kruchy.Zakupy.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -48,8 +48,25 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ninject">
-      <HintPath>..\..\..\Testy\WebApplication2\WebApplication2\lib\Ninject.dll</HintPath>
+    <Reference Include="FluentAssertions, Version=4.19.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.19.2\lib\net45\FluentAssertions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=4.19.2.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.19.2\lib\net45\FluentAssertions.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.6.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.6.0\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,11 +78,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\DefinicjaZamowienia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ZakupyModule.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kruchy.Model.DataTypes.Tests\Kruchy.Model.DataTypes.Tests.csproj">
+      <Project>{ffaf78cb-1de0-465b-8ba8-eca9ef899a72}</Project>
+      <Name>Kruchy.Model.DataTypes.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kruchy.Model.DataTypes\Kruchy.Model.DataTypes.csproj">
       <Project>{58e70e0e-b135-4d4a-9aa9-a56911739859}</Project>
       <Name>Kruchy.Model.DataTypes</Name>
@@ -74,13 +97,22 @@
       <Project>{bbf4f787-0d49-477e-b857-556d87c6e305}</Project>
       <Name>Kruchy.NHibernate</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Kruchy.NInject.Adapter\Kruchy.NInject.Adapter.csproj">
+      <Project>{1b0aeb6d-5452-4b4d-aa62-70b83740e6f6}</Project>
+      <Name>Kruchy.NInject.Adapter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kruchy.Testy\Kruchy.Testy.csproj">
+      <Project>{7fcc347b-5b00-4263-a236-918ac927aff8}</Project>
+      <Name>Kruchy.Testy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kruchy.Zakupy\Kruchy.Zakupy.csproj">
+      <Project>{6f242181-679c-464e-8e3d-ccbf9b26d2d2}</Project>
+      <Name>Kruchy.Zakupy</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Repositories\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="MapowaniaNHibernate\DefinicjaZamowienia.hbm.xml" />
+    <Folder Include="Builders\" />
+    <Folder Include="Unit\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
