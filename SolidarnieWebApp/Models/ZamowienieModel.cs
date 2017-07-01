@@ -1,5 +1,5 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace SolidarnieWebApp.Models
 {
@@ -9,12 +9,6 @@ namespace SolidarnieWebApp.Models
 
         public DateTime CzasKoncaZamawiania { get; set; }
 
-        [UIHint("FileUpload")]
-        public string NazwaPolaPliku { get; set; }
-
-        public ZamowienieModel()
-        {
-            NazwaPolaPliku = "excel";
-        }
+        public HttpPostedFileBase Testowo { get; set; }
     }
 }

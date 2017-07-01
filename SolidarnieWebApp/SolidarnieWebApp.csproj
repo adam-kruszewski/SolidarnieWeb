@@ -305,8 +305,8 @@
     <Content Include="Views\Logowanie\ButtonWyloguj.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Haslo.cshtml" />
     <Content Include="Views\Logowanie\Login.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\FileUpload.cshtml" />
     <Content Include="Views\ZamowienieForm\Create.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\HttpPostedFileBase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
