@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Kruchy.Zakupy"
+                   namespace="Kruchy.Zakupy.Domain">
+
+  <class name="DefinicjaZamowienia" table="Definicje_Zamowienia">
+    <id name="ID">
+      <generator class="identity" />
+    </id>
+    <property name="Nazwa" />
+    <property name="CzasKoncaZamawiania" />
+    <property name="Zamkniete" />
+  </class>
+
+</hibernate-mapping>

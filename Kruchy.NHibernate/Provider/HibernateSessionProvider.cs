@@ -11,6 +11,12 @@ namespace Kruchy.NHibernate.Provider
         private ISession sesja;
         private ISessionFactory fabrykaSesji;
 
+        public void AktualizujBaze()
+        {
+            var update = new SchemaUpdate(DajKonfiguracje());
+            update.Execute(true, true);
+        }
+
         public void UtworzBaze()
         {
             var konfiguracja = DajKonfiguracje();

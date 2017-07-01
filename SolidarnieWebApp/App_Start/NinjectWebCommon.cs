@@ -8,6 +8,7 @@ namespace SolidarnieWebApp.App_Start
     using Kruchy.NHibernate.Provider;
     using Kruchy.NInject.Adapter.Ladowanie;
     using Kruchy.Uzytkownicy;
+    using Kruchy.Zakupy;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using Ninject;
     using Ninject.Web.Common;
@@ -62,10 +63,12 @@ namespace SolidarnieWebApp.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.LoadOnce<UzytkownicyModule>();
-            kernel.Bind<IHibernateSessionProvider>()
-                .To<HibernateSessionProvider>()
-                    .InRequestScope();
+            kernel.LoadOnce<SolidarnieModule>();
+            //kernel.LoadOnce<UzytkownicyModule>();
+            //kernel.LoadOnce<ZakupyModule>();
+            //kernel.Bind<IHibernateSessionProvider>()
+            //    .To<HibernateSessionProvider>()
+            //        .InRequestScope();
         }
     }
 }
