@@ -323,6 +323,7 @@
     <Content Include="Views\Logowanie\Login.cshtml" />
     <Content Include="Views\ZamowienieForm\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\HttpPostedFileBase.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
