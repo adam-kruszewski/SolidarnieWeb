@@ -23,9 +23,20 @@ namespace SolidarnieWebApp
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jquery-ui")
+                .Include("~/Scripts/jquery-ui.js")
+                .Include("~/Scripts/Widgets/DateWidget.js")
+                .Include("~/Scripts/Setup.js"));
+
+            //bundles.Add(new ScriptBundle("~/bundles/widgets")
+            //    .Include("~/Scripts/Widgets/DateWidget.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/jquery-ui/jquery-ui.css"));
+            //bundles.Add(new StyleBundle("~/Content/css/jquery-ui")
+            //    .Include("~/Content/jquery-ui/jquery-ui.css"));
         }
     }
 }
