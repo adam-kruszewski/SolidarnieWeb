@@ -1,3 +1,3 @@
 ﻿@model System.DateTime?
-@Html.TextBox("", String.Format("{0:d}", Model.HasValue ? Model.Value.ToShortDateString() : string.Empty), new { @class = "datepicker input-sm form-control" })
 
+@Html.TextBoxFor(m => m, new { data_toggle = "kruchydatepicker", @class = "date-picker input-sm form-control" })
