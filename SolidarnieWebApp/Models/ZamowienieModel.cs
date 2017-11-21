@@ -10,5 +10,10 @@ namespace SolidarnieWebApp.Models
         public DateTime CzasKoncaZamawiania { get; set; }
 
         public HttpPostedFileBase Testowo { get; set; }
+
+        public ZamowienieModel()
+        {
+            CzasKoncaZamawiania = DateTime.Today;
+        }
     }
 }

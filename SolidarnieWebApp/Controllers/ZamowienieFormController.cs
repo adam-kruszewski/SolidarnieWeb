@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.Mvc;
 using SolidarnieWebApp.Authentication;
 using SolidarnieWebApp.Models;
@@ -15,7 +16,7 @@ namespace SolidarnieWebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(ZamowienieModel form, HttpPostedFileBase excel)
+        public ActionResult Create(ZamowienieModel form)
         {
             return View(form);
         }
