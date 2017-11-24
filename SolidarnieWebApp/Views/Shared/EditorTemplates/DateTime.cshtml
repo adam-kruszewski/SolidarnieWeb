@@ -1,3 +1,9 @@
 ﻿@model System.DateTime?
 
-@Html.TextBoxFor(m => m, new { data_toggle = "kruchydatepicker", @class = "date-picker input-sm form-control" })
+@Html.TextBoxFor(m => m,
+    new {
+        data_toggle = "kruchydatepicker",
+        @class = "date-picker input-sm form-control",
+        size = 10,
+        maxlength = 10,
+        data_format = "yy-mm-dd" })

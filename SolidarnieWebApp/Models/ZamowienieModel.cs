@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Web;
 
 namespace SolidarnieWebApp.Models
@@ -7,9 +8,11 @@ namespace SolidarnieWebApp.Models
     {
         public string Nazwa { get; set; }
 
+        [DisplayName("Czas końca zamawiania")]
         public DateTime CzasKoncaZamawiania { get; set; }
 
-        public HttpPostedFileBase Testowo { get; set; }
+        [DisplayName("Plik .xslx")]
+        public HttpPostedFileBase Plik { get; set; }
 
         public ZamowienieModel()
         {

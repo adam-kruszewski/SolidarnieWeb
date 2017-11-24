@@ -13,6 +13,7 @@ $(function () {
                     buttonText: '',
                     showButtonPanel: true
                 });
+            this.element.val(this.element.val().substring(0, 10));
         },
 
         _destroy: function () {
