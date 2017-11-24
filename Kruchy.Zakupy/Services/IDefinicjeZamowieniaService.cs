@@ -1,10 +1,11 @@
-﻿using Kruchy.NHibernate.Repositories;
-using Kruchy.Zakupy.Domain;
+﻿using Kruchy.Model.DataTypes.Walidacja;
 
 namespace Kruchy.Zakupy.Services
 {
-    interface IDefinicjeZamowieniaService
+    public interface IDefinicjeZamowieniaService
     {
-        int Wstaw(WstawienieDefinicjiZamowieniaRequest request);
+        int? Wstaw(
+            WstawienieDefinicjiZamowieniaRequest request,
+            IWalidacjaListener listenerWalidacji);
     }
 }
