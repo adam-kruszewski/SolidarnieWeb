@@ -24,7 +24,9 @@ namespace SolidarnieWebApp
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery-ui")
-                .Include("~/Scripts/jquery-ui.js")
+                .Include("~/Scripts/jquery-ui.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/kruchy-js")
                 .Include("~/Scripts/Widgets/DateWidget.js")
                 .Include("~/Scripts/Setup.js"));
 
