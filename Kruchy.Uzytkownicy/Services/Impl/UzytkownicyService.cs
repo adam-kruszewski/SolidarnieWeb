@@ -26,6 +26,7 @@ namespace Kruchy.Uzytkownicy.Services.Impl
 
             var view = new UzytkownikView
             {
+                ID = id,
                 Email = uzytkownik.Email,
                 Nazwa = uzytkownik.Nazwa
             };
@@ -38,7 +39,7 @@ namespace Kruchy.Uzytkownicy.Services.Impl
             return repository.GetAll();
         }
 
-        public ZalogowanyUzytkownikView SzukajWgNazwyHasla(
+        public UzytkownikView SzukajWgNazwyHasla(
             string nazwa,
             string haslo)
         {
@@ -46,7 +47,7 @@ namespace Kruchy.Uzytkownicy.Services.Impl
             if (uzytkownik == null || uzytkownik.Haslo != haslo)
                 return null;
 
-            return new ZalogowanyUzytkownikView
+            return new UzytkownikView
             {
                 ID = uzytkownik.ID,
                 Nazwa = uzytkownik.Nazwa,

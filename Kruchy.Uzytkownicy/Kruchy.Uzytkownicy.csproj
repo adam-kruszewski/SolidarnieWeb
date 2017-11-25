@@ -122,7 +122,6 @@
     <Compile Include="Services\ModyfikacjaUzytkownikaRequest.cs" />
     <Compile Include="UzytkownicyModule.cs" />
     <Compile Include="Views\UzytkownikView.cs" />
-    <Compile Include="Views\ZalogowanyUzytkownikView.cs" />
     <Compile Include="Walidacja\Impl\WalidacjaUzytkownika.cs" />
     <Compile Include="Walidacja\IWalidacjaUzytkownika.cs" />
   </ItemGroup>

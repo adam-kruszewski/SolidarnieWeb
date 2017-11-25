@@ -52,7 +52,7 @@ namespace SolidarnieWebApp.Controllers
             return View(model);
         }
 
-        private string PrzygotujTrescCookie(ZalogowanyUzytkownikView uzytkownik)
+        private string PrzygotujTrescCookie(UzytkownikView uzytkownik)
         {
             var writer = new StringWriter();
             new JsonSerializer().Serialize(writer, uzytkownik);
