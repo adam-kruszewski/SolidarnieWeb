@@ -1,8 +1,6 @@
-﻿using Kruchy.NHibernate.Provider;
-using Kruchy.NInject.Adapter.Ladowanie;
+﻿using Kruchy.NInject.Adapter.Ladowanie;
 using Kruchy.NInject.Adapter.Testy;
 using Kruchy.Testy;
-using Kruchy.Testy.NHibernateProvider;
 using Kruchy.Testy.Utils;
 using NUnit.Framework;
 

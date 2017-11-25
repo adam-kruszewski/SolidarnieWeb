@@ -28,6 +28,7 @@ namespace Kruchy.Uzytkownicy.Tests.Unit
             {
                 Email = "a@b.pl",
                 Haslo = "haslo1",
+                PowtorzenieHasla = "haslo1",
                 Nazwa = "nazwa"
             };
 
