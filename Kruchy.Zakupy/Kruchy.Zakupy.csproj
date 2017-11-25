@@ -63,9 +63,12 @@
   <ItemGroup>
     <Compile Include="Domain\DefinicjaZamowienia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Napisy.cs" />
     <Compile Include="Services\IDefinicjeZamowieniaService.cs" />
     <Compile Include="Services\Impl\DefinicjeZamowieniaService.cs" />
     <Compile Include="Services\WstawienieDefinicjiZamowieniaRequest.cs" />
+    <Compile Include="Walidacja\Impl\WalidacjaDefinicjiZamowienia.cs" />
+    <Compile Include="Walidacja\IWalidacjaDefinicjiZamowienia.cs" />
     <Compile Include="ZakupyModule.cs" />
   </ItemGroup>
   <ItemGroup>
