@@ -1,7 +1,7 @@
 ﻿
 namespace Kruchy.Model.DataTypes.Walidacja
 {
-    interface IWalidator<T>
+    public interface IWalidator<T>
     {
         bool Waliduj(T obiekt, IWalidacjaListener listener);
     }
