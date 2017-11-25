@@ -1,8 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using System.Web.Mvc.Filters;
-using Kruchy.Uzytkownicy.Domain;
 using Kruchy.Uzytkownicy.Services;
+using Kruchy.Uzytkownicy.Views;
 using SolidarnieWebApp.Authentication;
 using SolidarnieWebApp.Models;
 using SolidarnieWebApp.Walidacja;
@@ -29,7 +28,7 @@ namespace SolidarnieWebApp.Controllers
             return View(model);
         }
 
-        private UzytkownikRowModel DajUzytkownikRowModel(Uzytkownik o)
+        private UzytkownikRowModel DajUzytkownikRowModel(UzytkownikView o)
         {
             return new UzytkownikRowModel
             {

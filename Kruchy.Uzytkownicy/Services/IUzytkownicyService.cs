@@ -14,9 +14,11 @@ namespace Kruchy.Uzytkownicy.Services
         Uzytkownik Dodaj(
             DodanieUzytkownikaRequest request,
             IWalidacjaListener listener);
+
         bool Zmien(
             ModyfikacjaUzytkownikaRequest request,
             IWalidacjaListener listener);
-        IList<Uzytkownik> SzukajWszystkich();
+
+        IList<UzytkownikView> SzukajWszystkich();
     }
 }

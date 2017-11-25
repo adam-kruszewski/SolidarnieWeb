@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Kruchy.Model.DataTypes.Walidacja;
 using Kruchy.Uzytkownicy.Domain;
 using Kruchy.Uzytkownicy.Repositories;
@@ -34,9 +35,14 @@ namespace Kruchy.Uzytkownicy.Services.Impl
             return view;
         }
 
-        public IList<Uzytkownik> SzukajWszystkich()
+        public IList<UzytkownikView> SzukajWszystkich()
         {
-            return repository.GetAll();
+            return repository.GetAll().Select(o => new UzytkownikView
+            {
+                ID = o.ID,
+                Nazwa = o.Nazwa,
+                Email = o.Email
+            }).ToList();
         }
 
         public UzytkownikView SzukajWgNazwyHasla(
