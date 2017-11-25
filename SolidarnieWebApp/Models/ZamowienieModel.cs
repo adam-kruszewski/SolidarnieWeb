@@ -11,7 +11,7 @@ namespace SolidarnieWebApp.Models
         [DisplayName("Czas końca zamawiania")]
         public DateTime CzasKoncaZamawiania { get; set; }
 
-        [DisplayName("Plik .xslx")]
+        [DisplayName("Plik .xlsx")]
         public HttpPostedFileBase Plik { get; set; }
 
         public ZamowienieModel()
