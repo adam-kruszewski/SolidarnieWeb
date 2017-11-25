@@ -11,7 +11,7 @@ namespace Kruchy.Uzytkownicy.Services
 
         UzytkownikView SzukajWgNazwyHasla(string nazwa, string haslo);
 
-        Uzytkownik Dodaj(
+        int? Dodaj(
             DodanieUzytkownikaRequest request,
             IWalidacjaListener listener);
 

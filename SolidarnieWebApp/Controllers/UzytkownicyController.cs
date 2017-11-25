@@ -47,10 +47,7 @@ namespace SolidarnieWebApp.Controllers
         [HttpPost]
         public ActionResult Create(UzytkownikEditModel form)
         {
-            if (!ModelState.IsValid)
-            {
-            }
-            else
+            if (ModelState.IsValid)
             {
                 if (uzytkownicyService.Dodaj(
                         new DodanieUzytkownikaRequest

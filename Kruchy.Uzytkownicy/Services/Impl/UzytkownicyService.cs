@@ -61,7 +61,7 @@ namespace Kruchy.Uzytkownicy.Services.Impl
             };
         }
 
-        public Uzytkownik Dodaj(
+        public int? Dodaj(
             DodanieUzytkownikaRequest request,
             IWalidacjaListener listener)
         {
@@ -78,7 +78,7 @@ namespace Kruchy.Uzytkownicy.Services.Impl
                 Haslo = request.Haslo
             };
 
-            return repository.Save(nowy);
+            return repository.Save(nowy).ID;
         }
 
         private Uzytkownik DajUzytkownikaWgRequestDodawania(
