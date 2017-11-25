@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Domain\DefinicjaZamowienia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IDefinicjaZamowieniaRepository.cs" />
+    <Compile Include="Repositories\Impl\DefinicjaZamowieniaRepository.cs" />
     <Compile Include="Resources\Napisy.cs" />
     <Compile Include="Services\IDefinicjeZamowieniaService.cs" />
     <Compile Include="Services\Impl\DefinicjeZamowieniaService.cs" />
@@ -81,9 +83,7 @@
       <Name>Kruchy.NHibernate</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\Impl\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="MapowaniaNHibernate\DefinicjaZamowienia.hbm.xml" />
   </ItemGroup>

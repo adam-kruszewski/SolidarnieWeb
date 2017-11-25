@@ -11,5 +11,7 @@ namespace Kruchy.Zakupy.Domain
         public virtual DateTime CzasKoncaZamawiania { get; set; }
 
         public virtual bool Zamkniete { get; set; }
+
+        public virtual byte[] Plik { get; set; }
     }
 }

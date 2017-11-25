@@ -10,6 +10,7 @@
     <property name="Nazwa" />
     <property name="CzasKoncaZamawiania" />
     <property name="Zamkniete" />
+    <property name="Plik" />
   </class>
 
 </hibernate-mapping>
