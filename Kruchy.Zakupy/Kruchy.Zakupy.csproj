@@ -48,6 +48,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExcelPackage">
+      <HintPath>..\lib\ExcelPackage.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\..\..\Testy\WebApplication2\WebApplication2\lib\Ninject.dll</HintPath>
     </Reference>
@@ -71,6 +74,8 @@
     <Compile Include="Resources\Napisy.cs" />
     <Compile Include="Services\IDefinicjeZamowieniaService.cs" />
     <Compile Include="Services\Impl\DefinicjeZamowieniaService.cs" />
+    <Compile Include="Services\Impl\IWczytywaniePlikuZamowieniaService.cs" />
+    <Compile Include="Services\Impl\WczytywaniePlikuZamowieniaService.cs" />
     <Compile Include="Services\WstawienieDefinicjiZamowieniaRequest.cs" />
     <Compile Include="Walidacja\Impl\WalidacjaDefinicjiZamowienia.cs" />
     <Compile Include="Walidacja\IWalidacjaDefinicjiZamowienia.cs" />
@@ -86,7 +91,6 @@
       <Name>Kruchy.NHibernate</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="MapowaniaNHibernate\DefinicjaZamowienia.hbm.xml" />
   </ItemGroup>
