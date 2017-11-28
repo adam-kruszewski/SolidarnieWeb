@@ -1,6 +1,9 @@
-﻿using Kruchy.Model.DataTypes.Walidacja;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Kruchy.Model.DataTypes.Walidacja;
 using Kruchy.Zakupy.Domain;
 using Kruchy.Zakupy.Repositories;
+using Kruchy.Zakupy.Views;
 using Kruchy.Zakupy.Walidacja;
 
 namespace Kruchy.Zakupy.Services.Impl
@@ -33,6 +36,23 @@ namespace Kruchy.Zakupy.Services.Impl
             };
             var wstawiony = definicjaZamowieniaRepository.Save(definicja);
             return wstawiony.ID;
+        }
+
+        public IList<DefinicjaZamowieniaView> SzukajWszystkich()
+        {
+            return definicjaZamowieniaRepository.GetAll()
+                .Select(o => DajDefinicjeZamowieniaView(o)).ToList();
+        }
+
+        private DefinicjaZamowieniaView DajDefinicjeZamowieniaView(
+            DefinicjaZamowienia definicja)
+        {
+            return new DefinicjaZamowieniaView
+            {
+                ID = definicja.ID,
+                Nazwa = definicja.Nazwa,
+                CzasKoncaZamawiania = definicja.CzasKoncaZamawiania
+            };
         }
     }
 }

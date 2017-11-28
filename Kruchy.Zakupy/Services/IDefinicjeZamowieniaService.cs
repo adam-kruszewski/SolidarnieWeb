@@ -1,4 +1,6 @@
-﻿using Kruchy.Model.DataTypes.Walidacja;
+﻿using System.Collections.Generic;
+using Kruchy.Model.DataTypes.Walidacja;
+using Kruchy.Zakupy.Views;
 
 namespace Kruchy.Zakupy.Services
 {
@@ -7,5 +9,7 @@ namespace Kruchy.Zakupy.Services
         int? Wstaw(
             WstawienieDefinicjiZamowieniaRequest request,
             IWalidacjaListener listenerWalidacji);
+
+        IList<DefinicjaZamowieniaView> SzukajWszystkich();
     }
 }

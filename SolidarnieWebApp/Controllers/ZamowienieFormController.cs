@@ -33,7 +33,7 @@ namespace SolidarnieWebApp.Controllers
                 definicjeService.Wstaw(DajRequestWstawienia(form), listenerWalidacji);
             if (wynikWstawienia.HasValue)
             {
-                return View(new ZamowienieModel());
+                return RedirectToAction("Index", "Zamowienia");
             }
             return View(form);
         }
