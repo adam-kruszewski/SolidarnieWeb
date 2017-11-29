@@ -240,8 +240,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\Attributes\UkrytaKolumnaAttribute.cs" />
     <Compile Include="HtmlHelpers\FormHelper.cs" />
+    <Compile Include="HtmlHelpers\TableHelper.cs" />
     <Compile Include="Models\DefinicjaZamowieniaRowModel.cs" />
+    <Compile Include="Models\KomorkaTabeliModel.cs" />
     <Compile Include="Models\ListaDefinicjiZamowieniaModel.cs" />
     <Compile Include="Models\ListaUzytkownikowModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -286,6 +289,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Views\Zamowienia\KolumnaAkcji.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
@@ -333,6 +337,7 @@
     <Content Include="Views\Shared\EditorTemplates\HttpPostedFileBase.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Zamowienia\Index.cshtml" />
+    <Content Include="Views\Shared\KomorkaTabeli.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

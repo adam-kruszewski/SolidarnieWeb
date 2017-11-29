@@ -1,3 +1,4 @@
+@using SolidarnieWebApp.HtmlHelpers
 @model SolidarnieWebApp.Models.ListaDefinicjiZamowieniaModel
 
 <h2>Lista zamówieñ</h2>
@@ -9,29 +10,4 @@
     </a>
 </p>
 
-<table class="table">
-    <tr>
-        <th>Nazwa</th>
-        <th>Czas koñca zamawania</th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model.Definicje)
-    {
-        <tr>
-            <td>
-                @item.Nazwa
-            </td>
-            <td>
-                @item.CzasKoncaZamawiania
-            </td>
-            <td>
-                <a href="@Url.Action("Edit", "ZamowienieForm", new { id = item.ID })" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-edit"></span>
-                    Edytuj
-                </a>
-            </td>
-        </tr>
-    }
-
-</table>
+@Html.GenerujTable(Model.Definicje)

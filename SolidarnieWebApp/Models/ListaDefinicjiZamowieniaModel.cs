@@ -6,11 +6,11 @@ namespace SolidarnieWebApp.Models
 {
     public class ListaDefinicjiZamowieniaModel
     {
-        public IEnumerable<DefinicjaZamowieniaRowModel> Definicje { get; set; }
+        public List<DefinicjaZamowieniaRowModel> Definicje { get; set; }
 
         public ListaDefinicjiZamowieniaModel(IEnumerable<DefinicjaZamowieniaView> definicje)
         {
-            Definicje = definicje.Select(o => DajRowModel(o));
+            Definicje = definicje.Select(o => DajRowModel(o)).ToList();
         }
 
         private DefinicjaZamowieniaRowModel DajRowModel(DefinicjaZamowieniaView o)
@@ -19,7 +19,8 @@ namespace SolidarnieWebApp.Models
             {
                 ID = o.ID,
                 Nazwa = o.Nazwa,
-                CzasKoncaZamawiania = o.CzasKoncaZamawiania
+                CzasKoncaZamawiania = o.CzasKoncaZamawiania,
+                IDDlaAkcji = o.ID
             };
         }
     }
