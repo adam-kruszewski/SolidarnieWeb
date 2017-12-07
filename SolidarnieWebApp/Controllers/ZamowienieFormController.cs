@@ -54,13 +54,10 @@ namespace SolidarnieWebApp.Controllers
         {
             if (inputStream == null)
                 return null;
-            var buffer = new char[1024];
-            using (var reader = new StreamReader(inputStream))
+
             using (var ms = new MemoryStream())
-            using (var writer = new StreamWriter(ms))
             {
-                reader.Read(buffer, 0, buffer.Length);
-                writer.Write(buffer);
+                inputStream.CopyTo(ms);
                 return ms.ToArray();
             }
         }
