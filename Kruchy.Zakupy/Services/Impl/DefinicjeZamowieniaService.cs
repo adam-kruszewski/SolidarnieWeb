@@ -12,13 +12,19 @@ namespace Kruchy.Zakupy.Services.Impl
     {
         private readonly IWalidacjaDefinicjiZamowienia walidacja;
         private readonly IDefinicjaZamowieniaRepository definicjaZamowieniaRepository;
+        private readonly IGrupaProduktowZamowieniaRepository grupyRepository;
+        private readonly IWczytywaniePlikuZamowieniaService wczytywanieService;
 
         public DefinicjeZamowieniaService(
             IWalidacjaDefinicjiZamowienia walidacja,
-            IDefinicjaZamowieniaRepository definicjaZamowieniaRepository)
+            IDefinicjaZamowieniaRepository definicjaZamowieniaRepository,
+            IGrupaProduktowZamowieniaRepository grupyRepository,
+            IWczytywaniePlikuZamowieniaService wczytywanieService)
         {
             this.walidacja = walidacja;
             this.definicjaZamowieniaRepository = definicjaZamowieniaRepository;
+            this.grupyRepository = grupyRepository;
+            this.wczytywanieService = wczytywanieService;
         }
 
         public int? Wstaw(
@@ -35,6 +41,20 @@ namespace Kruchy.Zakupy.Services.Impl
                 CzasKoncaZamawiania = request.DataKoncaZamawiania
             };
             var wstawiony = definicjaZamowieniaRepository.Save(definicja);
+
+            var zamowienie = wczytywanieService.Wczytaj(request.ZawartoscPliku);
+
+            foreach (var grupa in zamowienie.GrupyProduktow)
+            {
+                var g = new GrupaProduktowZamowienia
+                {
+                    DefinicjaZamowienia = wstawiony,
+                    LimitIlosciowy = grupa.MinimalneIlosci,
+                    Nazwa = grupa.Nazwa
+                };
+                grupyRepository.Save(g);
+            }
+
             return wstawiony.ID;
         }
 

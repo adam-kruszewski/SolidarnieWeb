@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Kruchy.Zakupy"
+                   namespace="Kruchy.Zakupy.Domain">
+
+  <class name="GrupaProduktowZamowienia" table="Grupy_produktow">
+    <id name="ID">
+      <generator class="identity" />
+    </id>
+    <many-to-one name="DefinicjaZamowienia" column="DefinicjaZamowieniaID"/>
+    <property name="Nazwa" />
+    <property name="LimitIlosciowy" not-null="false" />
+  </class>
+
+</hibernate-mapping>

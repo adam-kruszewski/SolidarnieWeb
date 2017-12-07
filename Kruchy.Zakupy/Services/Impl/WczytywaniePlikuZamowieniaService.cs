@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using Kruchy.Zakupy.BusinessObject;
 using OfficeOpenXml;
@@ -13,7 +14,11 @@ namespace Kruchy.Zakupy.Services.Impl
 
         public Zamowienie Wczytaj(byte[] zawartoscPliku)
         {
-            throw new System.NotImplementedException();
+            using (var tymczasowy = new TymczasowyPlik(".xslx"))
+            {
+                File.WriteAllBytes(tymczasowy.NazwaPliku, zawartoscPliku);
+                return Wczytaj(tymczasowy.NazwaPliku);
+            }
         }
 
         private Zamowienie Wczytaj(string sciezka)
@@ -123,6 +128,24 @@ namespace Kruchy.Zakupy.Services.Impl
         {
             public ExcelWorksheet Worksheet { get; set; }
             public ExcelPackage Package { get; set; }
+        }
+
+        private class TymczasowyPlik : IDisposable
+        {
+            public string NazwaPliku { get; private set; }
+
+            public TymczasowyPlik(string rozszerzenie)
+            {
+                NazwaPliku = Path.Combine(
+                    Path.GetTempPath(),
+                    Guid.NewGuid().ToString() + rozszerzenie);
+            }
+
+            public void Dispose()
+            {
+                if (File.Exists(NazwaPliku))
+                    File.Delete(NazwaPliku);
+            }
         }
     }
 }
