@@ -20,7 +20,7 @@ namespace Kruchy.NInject.Adapter.Ladowanie
             kernel.Bind(
                 scanner => scanner
                     .From(assembly)
-                    .IncludingNonePublicTypes()
+                    .IncludingNonPublicTypes()
                     .Select(o => typeof(T).IsAssignableFrom(o))
                     .BindSelection((type, baseTypes) => baseTypes.Where(o => o == typeof(T)))
                     .Configure(o => o.InSingletonScope()));
@@ -37,7 +37,7 @@ namespace Kruchy.NInject.Adapter.Ladowanie
             kernel.Bind(
                 scanner =>
                     scanner.From(assembly)
-                        .IncludingNonePublicTypes()
+                        .IncludingNonPublicTypes()
                         .SelectAllClasses()
                         .BindWith(new BindingGenerator()));
 
