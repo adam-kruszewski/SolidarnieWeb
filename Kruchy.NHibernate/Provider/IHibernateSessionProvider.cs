@@ -7,5 +7,9 @@ namespace Kruchy.NHibernate.Provider
         void AktualizujBaze();
         void UtworzBaze();
         ISession DajSesje();
+        bool JestOtwartaTransakcja();
+        void RozpocznijTransakcje();
+        void Commit();
+        void Rollback();
     }
 }

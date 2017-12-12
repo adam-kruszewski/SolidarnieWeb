@@ -1,4 +1,5 @@
-﻿using Kruchy.NHibernate.RejestracjaAssembly;
+﻿using System;
+using Kruchy.NHibernate.RejestracjaAssembly;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
@@ -51,6 +52,26 @@ namespace Kruchy.NHibernate.Provider
         public void Dispose()
         {
             sesja.Dispose();
+        }
+
+        public bool JestOtwartaTransakcja()
+        {
+            return DajSesje().Transaction.IsActive;
+        }
+
+        public void RozpocznijTransakcje()
+        {
+            DajSesje().BeginTransaction();
+        }
+
+        public void Commit()
+        {
+            DajSesje().Transaction.Commit();
+        }
+
+        public void Rollback()
+        {
+            DajSesje().Transaction.Rollback();
         }
     }
 }

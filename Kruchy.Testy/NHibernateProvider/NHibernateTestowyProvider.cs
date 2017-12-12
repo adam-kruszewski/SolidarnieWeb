@@ -82,5 +82,25 @@ namespace Kruchy.Testy.NHibernateProvider
         {
             throw new NotImplementedException();
         }
+
+        public bool JestOtwartaTransakcja()
+        {
+            return DajSesje().Transaction.IsActive;
+        }
+
+        public void RozpocznijTransakcje()
+        {
+            DajSesje().BeginTransaction();
+        }
+
+        public void Commit()
+        {
+            DajSesje().Transaction.Commit();
+        }
+
+        public void Rollback()
+        {
+            DajSesje().Transaction.Rollback();
+        }
     }
 }
