@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Kruchy.Core.Aspects;
 using Kruchy.Model.DataTypes.Walidacja;
 using Kruchy.Zakupy.Domain;
 using Kruchy.Zakupy.Repositories;
@@ -8,6 +9,7 @@ using Kruchy.Zakupy.Walidacja;
 
 namespace Kruchy.Zakupy.Services.Impl
 {
+    [Transakcyjna]
     class DefinicjeZamowieniaService : IDefinicjeZamowieniaService
     {
         private readonly IWalidacjaDefinicjiZamowienia walidacja;
@@ -55,6 +57,8 @@ namespace Kruchy.Zakupy.Services.Impl
                 grupyRepository.Save(g);
             }
 
+            if (wstawiony.ID != 0)
+                throw new System.Exception("Testy");
             return wstawiony.ID;
         }
 

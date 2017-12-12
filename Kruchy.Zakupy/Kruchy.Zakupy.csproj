@@ -55,8 +55,13 @@
     <Reference Include="ExcelPackage">
       <HintPath>..\lib\ExcelPackage.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\..\..\Testy\WebApplication2\WebApplication2\lib\Ninject.dll</HintPath>
+    <Reference Include="Ninject, Version=3.3.3.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.3\lib\net45\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception, Version=3.3.3.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Interception.3.3.3\lib\net45\Ninject.Extensions.Interception.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -90,6 +95,10 @@
     <Compile Include="ZakupyModule.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kruchy.Core\Kruchy.Core.csproj">
+      <Project>{0fe01cd3-4c99-4217-880c-62d6567d6145}</Project>
+      <Name>Kruchy.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kruchy.Model.DataTypes\Kruchy.Model.DataTypes.csproj">
       <Project>{58e70e0e-b135-4d4a-9aa9-a56911739859}</Project>
       <Name>Kruchy.Model.DataTypes</Name>

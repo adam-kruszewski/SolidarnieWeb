@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Kruchy.Zakupy.BusinessObject
 {
-    class Zamowienie
+    public class Zamowienie
     {
         public IList<GrupaProduktow> GrupyProduktow { get; set; }
         public string Nazwa { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Kruchy.Zakupy.BusinessObject
 {
-    class Produkt
+    public class Produkt
     {
         public string Nazwa { get; set; }
 

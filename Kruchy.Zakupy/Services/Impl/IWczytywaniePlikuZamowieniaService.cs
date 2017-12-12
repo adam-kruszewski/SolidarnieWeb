@@ -2,7 +2,7 @@
 
 namespace Kruchy.Zakupy.Services.Impl
 {
-    interface IWczytywaniePlikuZamowieniaService
+    public interface IWczytywaniePlikuZamowieniaService
     {
         Zamowienie Wczytaj(byte[] zawartoscPliku);
     }
