@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Kruchy.Zakupy.Domain
 {
@@ -13,5 +14,12 @@ namespace Kruchy.Zakupy.Domain
         public virtual bool Zamkniete { get; set; }
 
         public virtual byte[] Plik { get; set; }
+
+        public virtual ISet<GrupaProduktowZamowienia> GrupyProduktow { get; set; }
+
+        public DefinicjaZamowienia()
+        {
+            GrupyProduktow = new HashSet<GrupaProduktowZamowienia>();
+        }
     }
 }

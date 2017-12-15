@@ -42,23 +42,21 @@ namespace Kruchy.Zakupy.Services.Impl
                 Plik = request.ZawartoscPliku,
                 CzasKoncaZamawiania = request.DataKoncaZamawiania
             };
-            var wstawiony = definicjaZamowieniaRepository.Save(definicja);
+
 
             var zamowienie = wczytywanieService.Wczytaj(request.ZawartoscPliku);
-
             foreach (var grupa in zamowienie.GrupyProduktow)
             {
                 var g = new GrupaProduktowZamowienia
                 {
-                    DefinicjaZamowienia = wstawiony,
+                    DefinicjaZamowienia = definicja,
                     LimitIlosciowy = grupa.MinimalneIlosci,
                     Nazwa = grupa.Nazwa
                 };
-                grupyRepository.Save(g);
+                definicja.GrupyProduktow.Add(g);
             }
+            var wstawiony = definicjaZamowieniaRepository.Save(definicja);
 
-            if (wstawiony.ID != 0)
-                throw new System.Exception("Testy");
             return wstawiony.ID;
         }
 

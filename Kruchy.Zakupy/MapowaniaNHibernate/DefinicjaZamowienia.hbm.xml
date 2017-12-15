@@ -11,6 +11,10 @@
     <property name="CzasKoncaZamawiania" />
     <property name="Zamkniete" />
     <property name="Plik" />
+    <set name="GrupyProduktow" inverse="false" cascade="all">
+      <key column="DefinicjaZamowieniaID" />
+      <one-to-many class="GrupaProduktowZamowienia" />
+    </set>
   </class>
 
 </hibernate-mapping>
