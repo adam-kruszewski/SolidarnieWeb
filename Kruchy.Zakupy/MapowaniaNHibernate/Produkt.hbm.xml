@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Kruchy.Zakupy"
+                   namespace="Kruchy.Zakupy.Domain">
+
+  <class name="Produkt" table="Produkty">
+    <id name="ID">
+      <generator class="identity" />
+    </id>
+    <many-to-one name="GrupaProduktow" column="GrupaProduktowID"/>
+    <property name="Nazwa" not-null="true" />
+    <property name="Cena" not-null="true" />
+  </class>
+
+</hibernate-mapping>

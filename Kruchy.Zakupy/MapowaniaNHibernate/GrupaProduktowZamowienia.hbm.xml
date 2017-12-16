@@ -10,6 +10,10 @@
     <many-to-one name="DefinicjaZamowienia" column="DefinicjaZamowieniaID"/>
     <property name="Nazwa" />
     <property name="LimitIlosciowy" not-null="false" />
+    <set name="Produkty" inverse="false" cascade="all">
+      <key column="GrupaProduktowID" />
+      <one-to-many class="Produkt" />
+    </set>
   </class>
 
 </hibernate-mapping>

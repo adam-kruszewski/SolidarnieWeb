@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Kruchy.Zakupy.Domain
 {
@@ -15,6 +11,12 @@ namespace Kruchy.Zakupy.Domain
         public virtual int? LimitIlosciowy { get; set; }
 
         public virtual DefinicjaZamowienia DefinicjaZamowienia { get; set; }
-        //public virtual int DefinicjaZamowieniaID { get; set; }
+
+        public virtual ISet<Produkt> Produkty { get; set; }
+
+        public GrupaProduktowZamowienia()
+        {
+            Produkty = new HashSet<Produkt>();
+        }
     }
 }

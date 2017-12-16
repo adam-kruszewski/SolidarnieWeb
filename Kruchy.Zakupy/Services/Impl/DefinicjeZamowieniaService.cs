@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Kruchy.Core.Aspects;
 using Kruchy.Model.DataTypes.Walidacja;
+using Kruchy.Zakupy.BusinessObject;
 using Kruchy.Zakupy.Domain;
 using Kruchy.Zakupy.Repositories;
 using Kruchy.Zakupy.Views;
@@ -47,12 +49,7 @@ namespace Kruchy.Zakupy.Services.Impl
             var zamowienie = wczytywanieService.Wczytaj(request.ZawartoscPliku);
             foreach (var grupa in zamowienie.GrupyProduktow)
             {
-                var g = new GrupaProduktowZamowienia
-                {
-                    DefinicjaZamowienia = definicja,
-                    LimitIlosciowy = grupa.MinimalneIlosci,
-                    Nazwa = grupa.Nazwa
-                };
+                var g = PrzygotujGrupeProduktow(definicja, grupa);
                 definicja.GrupyProduktow.Add(g);
             }
             var wstawiony = definicjaZamowieniaRepository.Save(definicja);
@@ -60,10 +57,49 @@ namespace Kruchy.Zakupy.Services.Impl
             return wstawiony.ID;
         }
 
+        private GrupaProduktowZamowienia PrzygotujGrupeProduktow(
+            DefinicjaZamowienia definicja,
+            GrupaProduktow grupa)
+        {
+            var grupaProduktowZamowienia =
+
+            new GrupaProduktowZamowienia
+            {
+                DefinicjaZamowienia = definicja,
+                LimitIlosciowy = grupa.MinimalneIlosci,
+                Nazwa = grupa.Nazwa,
+            };
+            grupaProduktowZamowienia.Produkty =
+                PrzygotujGrupeProduktow(grupa.Pozycje, grupaProduktowZamowienia);
+            return grupaProduktowZamowienia;
+        }
+
+        private ISet<Domain.Produkt> PrzygotujGrupeProduktow(
+            IList<BusinessObject.Produkt> pozycje,
+            GrupaProduktowZamowienia grupa)
+        {
+            var wynik = new HashSet<Domain.Produkt>();
+
+            foreach (var p in pozycje)
+            {
+                var produkt = new Domain.Produkt
+                {
+                    Cena = p.CenaDecimal,
+                    Nazwa = p.Nazwa,
+                    GrupaProduktow = grupa
+                };
+                wynik.Add(produkt);
+            }
+
+            return wynik;
+        }
+
         public IList<DefinicjaZamowieniaView> SzukajWszystkich()
         {
-            return definicjaZamowieniaRepository.GetAll()
+            var wynik = definicjaZamowieniaRepository.GetAll()
                 .Select(o => DajDefinicjeZamowieniaView(o)).ToList();
+
+            return wynik;
         }
 
         private DefinicjaZamowieniaView DajDefinicjeZamowieniaView(
