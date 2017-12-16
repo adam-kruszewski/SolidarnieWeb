@@ -14,8 +14,12 @@ namespace SolidarnieWebApp.Authentication
             {
             }else
             {
+                //filterContext.HttpContext.Request.
                 filterContext.Result = new RedirectToRouteResult(
-                    new RouteValueDictionary(new { controller = "Logowanie", action = "Login" }));
+                    new RouteValueDictionary(new {
+                        controller = "Logowanie",
+                        action = "Login",
+                    returnUrl  = filterContext.HttpContext.Request.RawUrl }));
 
                 filterContext.Result.ExecuteResult(filterContext.Controller.ControllerContext);
             }

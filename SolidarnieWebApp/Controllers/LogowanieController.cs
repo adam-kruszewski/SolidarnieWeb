@@ -24,6 +24,7 @@ namespace SolidarnieWebApp.Controllers
         {
             var model = new LoginModel
             {
+                ReturnUrl = returnUrl
             };
             return View(model);
         }
@@ -46,6 +47,8 @@ namespace SolidarnieWebApp.Controllers
                 //   new AuthenticationProperties { IsPersistent = false }, ident);
                 HttpContext.Response.Cookies.Add(
                     new HttpCookie("solidarnie", PrzygotujTrescCookie(uzytkownik)));
+                if (!string.IsNullOrEmpty(model.ReturnUrl))
+                    return Redirect(model.ReturnUrl);
                 return RedirectToAction("Index", "Home");
             }
             ModelState.AddModelError("", "Błędna nazwa użytkownika lub hasło");
