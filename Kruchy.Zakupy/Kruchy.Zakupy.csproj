@@ -90,7 +90,10 @@
     <Compile Include="Services\Impl\IWczytywaniePlikuZamowieniaService.cs" />
     <Compile Include="Services\Impl\WczytywaniePlikuZamowieniaService.cs" />
     <Compile Include="Services\WstawienieDefinicjiZamowieniaRequest.cs" />
+    <Compile Include="Views\DefinicjaZamowieniaPelnaView.cs" />
     <Compile Include="Views\DefinicjaZamowieniaView.cs" />
+    <Compile Include="Views\GrupaProduktowView.cs" />
+    <Compile Include="Views\ProduktView.cs" />
     <Compile Include="Walidacja\Impl\WalidacjaDefinicjiZamowienia.cs" />
     <Compile Include="Walidacja\IWalidacjaDefinicjiZamowienia.cs" />
     <Compile Include="ZakupyModule.cs" />

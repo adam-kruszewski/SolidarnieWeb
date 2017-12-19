@@ -6,6 +6,8 @@ namespace Kruchy.Zakupy.Services
 {
     public interface IDefinicjeZamowieniaService
     {
+        DefinicjaZamowieniaPelnaView DajWgID(int definicjaID);
+
         int? Wstaw(
             WstawienieDefinicjiZamowieniaRequest request,
             IWalidacjaListener listenerWalidacji);

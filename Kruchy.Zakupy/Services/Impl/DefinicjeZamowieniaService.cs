@@ -31,6 +31,12 @@ namespace Kruchy.Zakupy.Services.Impl
             this.wczytywanieService = wczytywanieService;
         }
 
+        public DefinicjaZamowieniaPelnaView DajWgID(int definicjaID)
+        {
+            return DajPelnaDefinicjeZamowieniaView(
+                definicjaZamowieniaRepository.Get(definicjaID));
+        }
+
         public int? Wstaw(
             WstawienieDefinicjiZamowieniaRequest request,
             IWalidacjaListener listenerWalidacji)
@@ -105,12 +111,60 @@ namespace Kruchy.Zakupy.Services.Impl
         private DefinicjaZamowieniaView DajDefinicjeZamowieniaView(
             DefinicjaZamowienia definicja)
         {
-            return new DefinicjaZamowieniaView
-            {
-                ID = definicja.ID,
-                Nazwa = definicja.Nazwa,
-                CzasKoncaZamawiania = definicja.CzasKoncaZamawiania
-            };
+            var wynik = new DefinicjaZamowieniaView();
+            Uzupelnij(wynik, definicja);
+            return wynik;
+        }
+
+        private DefinicjaZamowieniaPelnaView DajPelnaDefinicjeZamowieniaView(
+            DefinicjaZamowienia definicja)
+        {
+            var wynik = new DefinicjaZamowieniaPelnaView();
+            Uzupelnij(wynik, definicja);
+            UzupelnijGrupy(wynik, definicja);
+
+            return wynik;
+        }
+
+        private void Uzupelnij(
+            DefinicjaZamowieniaView view,
+            DefinicjaZamowienia definicja)
+        {
+            view.ID = definicja.ID;
+            view.Nazwa = definicja.Nazwa;
+            view.CzasKoncaZamawiania = definicja.CzasKoncaZamawiania;
+        }
+
+        private void UzupelnijGrupy(
+            DefinicjaZamowieniaPelnaView wynik,
+            DefinicjaZamowienia definicja)
+        {
+            wynik.GrupyProduktow.AddRange(
+                definicja.GrupyProduktow.Select(o => DajGrupaView(o)).ToList());
+        }
+
+        private GrupaProduktowView DajGrupaView(GrupaProduktowZamowienia grupa)
+        {
+            var wynik = new GrupaProduktowView();
+
+            wynik.Nazwa = grupa.Nazwa;
+            wynik.Limit = grupa.LimitIlosciowy;
+            wynik.ID = grupa.ID;
+
+            wynik.Produkty.AddRange(
+                grupa.Produkty.Select(o => DajProduktView(o)));
+            return wynik;
+        }
+
+        private ProduktView DajProduktView(Domain.Produkt produkt)
+        {
+            var wynik = new ProduktView();
+
+            wynik.ID = produkt.ID;
+            wynik.Nazwa = produkt.Nazwa;
+            wynik.Cena = produkt.Cena;
+
+            return wynik;
         }
     }
 }
