@@ -247,6 +247,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Aspects\ExceptionInterceptor.cs" />
+    <Compile Include="Authentication\HttpUzytkownikProvider.cs" />
     <Compile Include="Authentication\WymagaLogowaniaAttribute.cs" />
     <Compile Include="Controllers\AdministracjaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -254,6 +255,7 @@
     <Compile Include="Controllers\UzytkownicyController.cs" />
     <Compile Include="Controllers\ZamowieniaController.cs" />
     <Compile Include="Controllers\ZamowienieFormController.cs" />
+    <Compile Include="Controllers\ZamowienieUzytkownikaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -355,6 +357,7 @@
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Zamowienia\Index.cshtml" />
     <Content Include="Views\Shared\KomorkaTabeli.cshtml" />
+    <Content Include="Views\ZamowienieUzytkownika\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -364,6 +367,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kruchy.Core\Kruchy.Core.csproj">
+      <Project>{0FE01CD3-4C99-4217-880C-62D6567D6145}</Project>
+      <Name>Kruchy.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kruchy.Model.DataTypes\Kruchy.Model.DataTypes.csproj">
       <Project>{58E70E0E-B135-4D4A-9AA9-A56911739859}</Project>
       <Name>Kruchy.Model.DataTypes</Name>

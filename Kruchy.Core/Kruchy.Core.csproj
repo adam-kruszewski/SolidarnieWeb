@@ -68,6 +68,8 @@
   <ItemGroup>
     <Compile Include="Aspects\TransakcyjnaAttribute.cs" />
     <Compile Include="Aspects\TransakcyjnyInterceptor.cs" />
+    <Compile Include="Autentykacja\IUzytkownik.cs" />
+    <Compile Include="Autentykacja\IUzytkownikProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,11 @@
-﻿using Kruchy.NHibernate.Provider;
+﻿using Kruchy.Core.Autentykacja;
+using Kruchy.NHibernate.Provider;
 using Kruchy.NInject.Adapter.Ladowanie;
 using Kruchy.Uzytkownicy;
 using Kruchy.Zakupy;
 using Ninject.Modules;
 using Ninject.Web.Common;
+using SolidarnieWebApp.Authentication;
 
 namespace SolidarnieWebApp
 {
@@ -16,6 +18,8 @@ namespace SolidarnieWebApp
             Kernel.Bind<IHibernateSessionProvider>()
                 .To<HibernateSessionProvider>()
                     .InRequestScope();
+
+            Kernel.Bind<IUzytkownikProvider>().To<HttpUzytkownikProvider>();
 
             var sesjaProvider =
                 Kernel.GetService(typeof(IHibernateSessionProvider))
