@@ -11,18 +11,6 @@ namespace Kruchy.Core.Mapowanie
         public TWynik Mapuj<TWynik>(object zrodlo)
         {
             return (TWynik)Mapuj(zrodlo, typeof(TWynik));
-            //var propertiesyZrodlo = zrodlo.GetType().GetProperties();
-            //var propertiesyWynik = typeof(TWynik).GetProperties();
-
-            //var mapaPrzepisania = PrzygotujMapePrzepisania(propertiesyZrodlo, propertiesyWynik);
-
-            //BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
-            //var konstruktorWyniku =
-            //typeof(TWynik).GetConstructors(flags)
-            //    .Where(constructor => constructor.GetParameters().Length == 0)
-            //    .First();
-
-            //return PrzygotujObiektWynikowy<TWynik>(zrodlo, mapaPrzepisania, konstruktorWyniku);
         }
 
         public object Mapuj(object zrodlo, Type typWyniku)
@@ -72,7 +60,7 @@ namespace Kruchy.Core.Mapowanie
             object zrodlo,
             TWynik wynik)
         {
-            var wartoscZrodla = mapowanie.Value.GetValue(zrodlo) as IList;
+            var wartoscZrodla = mapowanie.Value.GetValue(zrodlo) as IEnumerable;
 
             var wartoscWyniku = mapowanie.Key.GetValue(wynik) as IList;
 
@@ -90,24 +78,6 @@ namespace Kruchy.Core.Mapowanie
             else
                 return typeof(object);
         }
-
-        //private static object PrzygotujWartoscDlaPropertiesaWynikowego(
-        //    object zrodlo,
-        //    KeyValuePair<PropertyInfo, PropertyInfo> mapowanie)
-        //{
-        //    var typKolekcja = typeof(ICollection);
-        //    var typWlasciwosci = mapowanie.Key.PropertyType;
-
-        //    if (typKolekcja.IsAssignableFrom(typWlasciwosci))
-        //    {
-        //        foreach (var elementListyZrodla in (ICollection)mapowanie.Value.GetValue(zrodlo))
-        //        {
-
-        //        }
-        //    }
-        //    else
-        //        return mapowanie.Value.GetValue(zrodlo);
-        //}
 
         private Dictionary<PropertyInfo, PropertyInfo> PrzygotujMapePrzepisania(
             PropertyInfo[] propertiesyZrodlo,
