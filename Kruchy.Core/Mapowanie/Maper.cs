@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -8,34 +10,104 @@ namespace Kruchy.Core.Mapowanie
     {
         public TWynik Mapuj<TWynik>(object zrodlo)
         {
+            return (TWynik)Mapuj(zrodlo, typeof(TWynik));
+            //var propertiesyZrodlo = zrodlo.GetType().GetProperties();
+            //var propertiesyWynik = typeof(TWynik).GetProperties();
+
+            //var mapaPrzepisania = PrzygotujMapePrzepisania(propertiesyZrodlo, propertiesyWynik);
+
+            //BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
+            //var konstruktorWyniku =
+            //typeof(TWynik).GetConstructors(flags)
+            //    .Where(constructor => constructor.GetParameters().Length == 0)
+            //    .First();
+
+            //return PrzygotujObiektWynikowy<TWynik>(zrodlo, mapaPrzepisania, konstruktorWyniku);
+        }
+
+        public object Mapuj(object zrodlo, Type typWyniku)
+        {
             var propertiesyZrodlo = zrodlo.GetType().GetProperties();
-            var propertiesyWynik = typeof(TWynik).GetProperties();
+            var propertiesyWynik = typWyniku.GetProperties();
 
             var mapaPrzepisania = PrzygotujMapePrzepisania(propertiesyZrodlo, propertiesyWynik);
 
             BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
             var konstruktorWyniku =
-            typeof(TWynik).GetConstructors(flags)
+            typWyniku.GetConstructors(flags)
                 .Where(constructor => constructor.GetParameters().Length == 0)
                 .First();
 
-            return PrzygotujObiektWynikowy<TWynik>(zrodlo, mapaPrzepisania, konstruktorWyniku);
+            return PrzygotujObiektWynikowy(zrodlo, mapaPrzepisania, konstruktorWyniku);
+
         }
 
-        private TWynik PrzygotujObiektWynikowy<TWynik>(
+        private object PrzygotujObiektWynikowy(
             object zrodlo,
             Dictionary<PropertyInfo, PropertyInfo> mapaPrzepisania,
             ConstructorInfo konstruktorWyniku)
         {
-            var wynik = (TWynik)konstruktorWyniku.Invoke(new object[0]);
+            var wynik = konstruktorWyniku.Invoke(new object[0]);
             foreach (var mapowanie in mapaPrzepisania)
             {
-                mapowanie.Key.SetValue(wynik,
-                    mapowanie.Value.GetValue(zrodlo));
+                if (!JestKolekcja(mapowanie))
+                    mapowanie.Key.SetValue(wynik, mapowanie.Value.GetValue(zrodlo));
+                else
+                    DodajElementyKolekcji(mapowanie, zrodlo, wynik);
             }
 
             return wynik;
         }
+
+        private bool JestKolekcja(KeyValuePair<PropertyInfo, PropertyInfo> mapowanie)
+        {
+            var typKolekcja = typeof(IList);
+            var typWlasciwosci = mapowanie.Key.PropertyType;
+
+            return typKolekcja.IsAssignableFrom(typWlasciwosci);
+        }
+
+        private void DodajElementyKolekcji<TWynik>(
+            KeyValuePair<PropertyInfo, PropertyInfo> mapowanie,
+            object zrodlo,
+            TWynik wynik)
+        {
+            var wartoscZrodla = mapowanie.Value.GetValue(zrodlo) as IList;
+
+            var wartoscWyniku = mapowanie.Key.GetValue(wynik) as IList;
+
+            foreach (var obiektListyZrodlo in wartoscZrodla)
+                wartoscWyniku.Add(
+                    Mapuj(
+                        obiektListyZrodlo,
+                        OkreslTypElementuKolekcji(mapowanie.Key.PropertyType)));
+        }
+
+        private Type OkreslTypElementuKolekcji(Type propertyType)
+        {
+            if (propertyType.GenericTypeArguments.Count() == 1)
+                return propertyType.GenericTypeArguments.Single();
+            else
+                return typeof(object);
+        }
+
+        //private static object PrzygotujWartoscDlaPropertiesaWynikowego(
+        //    object zrodlo,
+        //    KeyValuePair<PropertyInfo, PropertyInfo> mapowanie)
+        //{
+        //    var typKolekcja = typeof(ICollection);
+        //    var typWlasciwosci = mapowanie.Key.PropertyType;
+
+        //    if (typKolekcja.IsAssignableFrom(typWlasciwosci))
+        //    {
+        //        foreach (var elementListyZrodla in (ICollection)mapowanie.Value.GetValue(zrodlo))
+        //        {
+
+        //        }
+        //    }
+        //    else
+        //        return mapowanie.Value.GetValue(zrodlo);
+        //}
 
         private Dictionary<PropertyInfo, PropertyInfo> PrzygotujMapePrzepisania(
             PropertyInfo[] propertiesyZrodlo,
