@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Kruchy.Core.Autentykacja;
+using SolidarnieWebApp.HtmlHelpers.Attributes;
 
 namespace SolidarnieWebApp.Models
 {
     public class ZamowienieEditModel
     {
+        public IUzytkownik Uzytkownik { get; set; }
+
         public int ID { get; set; }
 
-        List<GrupaProduktowEditModel> GrupyProduktow;
+        public List<GrupaProduktowEditModel> GrupyProduktow { get; set; }
 
         public ZamowienieEditModel()
         {
@@ -33,10 +35,14 @@ namespace SolidarnieWebApp.Models
 
     public class ProduktEditModel
     {
+        [UkrytaKolumna]
+        public int ID { get; set; }
+
         public string Nazwa { get; set; }
 
         public decimal Cena { get; set; }
 
+        [UIHint("Ilosc")]
         public int Ilosc { get; set; }
     }
 }

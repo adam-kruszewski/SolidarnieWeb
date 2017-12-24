@@ -4,7 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Kruchy.Core.Autentykacja;
+using Kruchy.Core.Mapowanie;
 using Kruchy.Zakupy.Services;
+using SolidarnieWebApp.Models;
 
 namespace SolidarnieWebApp.Controllers
 {
@@ -24,8 +26,11 @@ namespace SolidarnieWebApp.Controllers
         public ActionResult Index(int definicjaID)
         {
             var definicja = definicjeService.DajWgID(definicjaID);
-            var u = uzytkownikProvider.DajZalogowanego();
-            return View();
+
+            var editModel = definicja.Mapuj<ZamowienieEditModel>();
+
+            editModel.Uzytkownik = uzytkownikProvider.DajZalogowanego();
+            return View(editModel);
         }
     }
 }

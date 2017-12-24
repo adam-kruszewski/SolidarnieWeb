@@ -100,8 +100,7 @@ namespace Kruchy.Core.Mapowanie
             PropertyInfo[] listaPropertiesow,
             PropertyInfo wzorzec)
         {
-            return listaPropertiesow.Where(o => o.Name == wzorzec.Name)
-                .SingleOrDefault(o => o.PropertyType == wzorzec.PropertyType);
+            return listaPropertiesow.SingleOrDefault(o => o.Name == wzorzec.Name);
         }
     }
 }

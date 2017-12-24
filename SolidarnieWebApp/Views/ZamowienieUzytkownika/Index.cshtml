@@ -1,1 +1,13 @@
-zamawianie
+@using SolidarnieWebApp.Models;
+@using SolidarnieWebApp.HtmlHelpers;
+
+@model ZamowienieEditModel
+<h3> Zamówienie u¿ytkownika @Model.Uzytkownik.Nazwa</h3>
+@for (int i =0; i < Model.GrupyProduktow.Count; i++)
+{
+    
+    <div class="GrupaProduktow">
+        <h4> @Model.GrupyProduktow[i].Nazwa</h4>
+        @Html.GenerujTable(Model.GrupyProduktow[i].Produkty)
+    </div>
+}
