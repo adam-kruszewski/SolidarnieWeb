@@ -22,9 +22,10 @@ namespace SolidarnieWebApp.HtmlHelpers
                 writer.WriteLine("<table class=\"table\">");
                 GenerujWierszNaglowkowy(writer, model);
 
-                foreach (var wiersz in model)
+                for (int i =0; i< model.Count; i++)
                 {
-                    helper.GenerujWierszDlaModelu(writer, wiersz);
+                    var wiersz = model[i];
+                    helper.GenerujWierszDlaModelu(writer, wiersz, i);
                 }
 
                 writer.Write("</table>");
@@ -47,12 +48,13 @@ namespace SolidarnieWebApp.HtmlHelpers
         private static void GenerujWierszDlaModelu<T>(
             this HtmlHelper helper,
             TextWriter writer,
-            T wiersz)
+            T wiersz,
+            int numerWiersza)
         {
             writer.Write("<tr>");
             foreach (var p in typeof(T).GetProperties())
             {
-                helper.GenerujKolumnaDlaPropertiesaModelu(writer, p, wiersz);
+                helper.GenerujKolumnaDlaPropertiesaModelu(writer, p, wiersz, numerWiersza);
             }
             writer.Write("</tr>");
         }
@@ -71,7 +73,8 @@ namespace SolidarnieWebApp.HtmlHelpers
             this HtmlHelper helper,
             TextWriter writer,
             PropertyInfo p,
-            T wiersz)
+            T wiersz,
+            int numerWiersza)
         {
             if (!WyswietlacKolumne(p))
                 return;
@@ -86,7 +89,7 @@ namespace SolidarnieWebApp.HtmlHelpers
             writer.Write(
                 helper.Partial(
                     nazwaPartiala,
-                    new KomorkaTabeliModel(wiersz, p.Name)
+                    new KomorkaTabeliModel(wiersz, p.Name, numerWiersza)
                     ));
             writer.Write("</td>");
         }

@@ -6,10 +6,12 @@ using System.Web.Mvc;
 using Kruchy.Core.Autentykacja;
 using Kruchy.Core.Mapowanie;
 using Kruchy.Zakupy.Services;
+using SolidarnieWebApp.Authentication;
 using SolidarnieWebApp.Models;
 
 namespace SolidarnieWebApp.Controllers
 {
+    [WymagaLogowania]
     public class ZamowienieUzytkownikaController : Controller
     {
         private readonly IUzytkownikProvider uzytkownikProvider;
@@ -28,9 +30,15 @@ namespace SolidarnieWebApp.Controllers
             var definicja = definicjeService.DajWgID(definicjaID);
 
             var editModel = definicja.Mapuj<ZamowienieEditModel>();
-
+            editModel.DefinicjaID = definicjaID;
             editModel.Uzytkownik = uzytkownikProvider.DajZalogowanego();
             return View(editModel);
+        }
+
+        public ActionResult Zamow(ZamowienieEditPostModel form)
+        {
+            return RedirectToAction("Index", new { definicjaID = form.DefinicjaID });
+            //return View();
         }
     }
 }

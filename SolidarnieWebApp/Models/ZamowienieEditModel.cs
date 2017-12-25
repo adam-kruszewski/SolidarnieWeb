@@ -9,7 +9,7 @@ namespace SolidarnieWebApp.Models
     {
         public IUzytkownik Uzytkownik { get; set; }
 
-        public int ID { get; set; }
+        public int DefinicjaID { get; set; }
 
         public List<GrupaProduktowEditModel> GrupyProduktow { get; set; }
 

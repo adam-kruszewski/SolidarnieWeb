@@ -1,4 +1,8 @@
 @using SolidarnieWebApp.Models;
 @model KomorkaTabeliModel
-@Html.Hidden("Wiersz.ID")
-@Html.Editor("Wiersz." + Model.NazwaWlasciwosci)
+
+@{
+    var wiersz = Model.Wiersz as ProduktEditModel;
+}
+@Html.Hidden("form.Pozycje[" + Model.NumerWiersza + "].ID", wiersz.ID)
+@Html.Editor("Wiersz." + Model.NazwaWlasciwosci, "Int32", htmlFieldName: "form.Pozycje[" + Model.NumerWiersza + "].Ilosc")

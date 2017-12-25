@@ -270,6 +270,7 @@
     <Compile Include="Models\UzytkownikEditModel.cs" />
     <Compile Include="Models\UzytkownikRowModel.cs" />
     <Compile Include="Models\ZamowienieEditModel.cs" />
+    <Compile Include="Models\ZamowienieEditPostModel.cs" />
     <Compile Include="Models\ZamowienieModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolidarnieModule.cs" />
