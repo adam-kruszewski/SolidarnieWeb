@@ -60,7 +60,7 @@ namespace Kruchy.Zakupy.Services.Impl
         private PozycjaZamawiana DajPozycjeZamawiana(ZamawianaPozycja p)
         {
             var wynik = new PozycjaZamawiana();
-            wynik.Produkt = produktRepository.Load(p.PozycjaID);
+            wynik.Produkt = produktRepository.Load(p.ProduktID);
             wynik.Ilosc = p.Ilosc;
             return wynik;
         }

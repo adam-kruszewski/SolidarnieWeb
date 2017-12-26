@@ -55,7 +55,7 @@ namespace SolidarnieWebApp.Controllers
         {
             return new ZamawianaPozycja
             {
-                PozycjaID = o.ID,
+                ProduktID = o.ID,
                 Ilosc = o.Ilosc
             };
         }
