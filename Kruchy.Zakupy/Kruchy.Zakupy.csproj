@@ -55,6 +55,14 @@
     <Reference Include="ExcelPackage">
       <HintPath>..\lib\ExcelPackage.dll</HintPath>
     </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.1.0.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
       <Private>True</Private>
@@ -86,6 +94,12 @@
     <Compile Include="Repositories\IGrupaProduktowZamowieniaRepository.cs" />
     <Compile Include="Repositories\Impl\DefinicjaZamowieniaRepository.cs" />
     <Compile Include="Repositories\Impl\GrupaProduktowZamowieniaRepository.cs" />
+    <Compile Include="Repositories\Impl\PozycjaZamawianaRepository.cs" />
+    <Compile Include="Repositories\Impl\ProduktRepository.cs" />
+    <Compile Include="Repositories\Impl\ZamowienieRepository.cs" />
+    <Compile Include="Repositories\IZamowienieRepository.cs" />
+    <Compile Include="Repositories\IPozycjaZamawianaRepository.cs" />
+    <Compile Include="Repositories\IProduktRepository.cs" />
     <Compile Include="Resources\Napisy.cs" />
     <Compile Include="Services\IDefinicjeZamowieniaService.cs" />
     <Compile Include="Services\Impl\DefinicjeZamowieniaService.cs" />

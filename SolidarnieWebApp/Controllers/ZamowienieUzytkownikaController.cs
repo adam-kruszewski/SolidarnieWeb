@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Kruchy.Core.Autentykacja;
 using Kruchy.Core.Mapowanie;
@@ -16,13 +14,16 @@ namespace SolidarnieWebApp.Controllers
     {
         private readonly IUzytkownikProvider uzytkownikProvider;
         private readonly IDefinicjeZamowieniaService definicjeService;
+        private readonly IZamawianieService zamawianieService;
 
         public ZamowienieUzytkownikaController(
             IUzytkownikProvider uzytkownikProvider,
-            IDefinicjeZamowieniaService definicjeService)
+            IDefinicjeZamowieniaService definicjeService,
+            IZamawianieService zamawianieService)
         {
             this.uzytkownikProvider = uzytkownikProvider;
             this.definicjeService = definicjeService;
+            this.zamawianieService = zamawianieService;
         }
 
         public ActionResult Index(int definicjaID)
@@ -37,8 +38,26 @@ namespace SolidarnieWebApp.Controllers
 
         public ActionResult Zamow(ZamowienieEditPostModel form)
         {
+            var zamawianePozycje =
+                form.Pozycje.Where(o => o.Ilosc > 0).Select(o => DajZamawanaPozycje(o)).ToList();
+
+            if (!zamawianieService.Zamow(
+                form.DefinicjaID,
+                uzytkownikProvider.DajZalogowanego().ID,
+                zamawianePozycje))
+                throw new ApplicationException("Coś poszło nie tak");
+
             return RedirectToAction("Index", new { definicjaID = form.DefinicjaID });
             //return View();
+        }
+
+        private ZamawianaPozycja DajZamawanaPozycje(PozycjaZamowieniaModel o)
+        {
+            return new ZamawianaPozycja
+            {
+                PozycjaID = o.ID,
+                Ilosc = o.Ilosc
+            };
         }
     }
 }

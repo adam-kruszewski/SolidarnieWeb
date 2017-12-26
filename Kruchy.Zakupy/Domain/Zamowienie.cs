@@ -14,6 +14,10 @@ namespace Kruchy.Zakupy.Domain
 
         public virtual DateTime DataOstatniejAktualizacji { get; set; }
 
+        public virtual DefinicjaZamowienia Definicja { get; set; }
+
+        public virtual int DefinicjaID { get; set; }
+
         public virtual ISet<PozycjaZamawiana> Pozycje { get; set; }
 
         public Zamowienie()

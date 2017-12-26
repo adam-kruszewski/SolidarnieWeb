@@ -5,6 +5,9 @@ namespace Kruchy.Zakupy.Services
 {
     public interface IZamawianieService
     {
-        bool Zamow(int uzytkownikID, IEnumerable<ZamawianaPozycja> pozycje);
+        bool Zamow(
+            int definicjaID,
+            int uzytkownikID,
+            IEnumerable<ZamawianaPozycja> pozycje);
     }
 }

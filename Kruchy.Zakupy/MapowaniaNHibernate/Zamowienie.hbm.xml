@@ -8,7 +8,8 @@
     </id>
     <many-to-one name="Uzytkownik" column="UzytkownikID" lazy="proxy" not-null="true" />
     <property name="DataOstatniejAktualizacji" type="DateTime" column="DataOstatniejAktualizacji"/>
-
+    <many-to-one name="Definicja" column="DefinicjaID" lazy="proxy" not-null="true" />
+    
     <set name="Pozycje" inverse="false" cascade="all">
       <key column="ZamowienieID" />
       <one-to-many class="PozycjaZamawiana" />

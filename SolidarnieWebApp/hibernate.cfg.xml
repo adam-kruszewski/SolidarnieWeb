@@ -4,5 +4,6 @@
     <property name="connection.driver_class">NHibernate.Driver.SQLite20Driver</property>
     <property name="connection.connection_string">Data Source=|DataDirectory|solidarnie.hibernate.db</property>
     <property name="dialect">NHibernate.Dialect.SQLiteDialect</property>
+    <property name="show_sql">true</property>
   </session-factory>
 </hibernate-configuration>

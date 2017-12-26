@@ -17,6 +17,12 @@ namespace Kruchy.NHibernate.Repositories
             this.sessionProvider = sessionProvider;
         }
 
+        public virtual T Load(object id)
+        {
+            var session = sessionProvider.DajSesje();
+            return session.Load<T>(id);
+        }
+
         public virtual T Get(object id)
         {
             var session = sessionProvider.DajSesje();

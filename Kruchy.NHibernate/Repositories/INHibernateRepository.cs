@@ -5,6 +5,8 @@ namespace Kruchy.NHibernate.Repositories
     public interface INHibernateRepository<T>
        where T : class
     {
+        T Load(object id);
+
         T Get(object id);
 
         T Save(T o);
