@@ -1,6 +1,6 @@
 ﻿namespace Kruchy.Uzytkownicy.Domain
 {
-    class Uzytkownik
+    public class Uzytkownik
     {
         public virtual int ID { get; set; }
 
