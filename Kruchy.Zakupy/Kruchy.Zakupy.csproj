@@ -78,7 +78,9 @@
     <Compile Include="BusinessObject\Zamowienie.cs" />
     <Compile Include="Domain\DefinicjaZamowienia.cs" />
     <Compile Include="Domain\GrupaProduktowZamowienia.cs" />
+    <Compile Include="Domain\PozycjaZamawiana.cs" />
     <Compile Include="Domain\Produkt.cs" />
+    <Compile Include="Domain\Zamowienie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IDefinicjaZamowieniaRepository.cs" />
     <Compile Include="Repositories\IGrupaProduktowZamowieniaRepository.cs" />
@@ -89,7 +91,10 @@
     <Compile Include="Services\Impl\DefinicjeZamowieniaService.cs" />
     <Compile Include="Services\Impl\IWczytywaniePlikuZamowieniaService.cs" />
     <Compile Include="Services\Impl\WczytywaniePlikuZamowieniaService.cs" />
+    <Compile Include="Services\Impl\ZamawianieService.cs" />
+    <Compile Include="Services\IZamawianieService.cs" />
     <Compile Include="Services\WstawienieDefinicjiZamowieniaRequest.cs" />
+    <Compile Include="Services\ZamawianaPozycja.cs" />
     <Compile Include="Views\DefinicjaZamowieniaPelnaView.cs" />
     <Compile Include="Views\DefinicjaZamowieniaView.cs" />
     <Compile Include="Views\GrupaProduktowView.cs" />
@@ -111,6 +116,10 @@
       <Project>{bbf4f787-0d49-477e-b857-556d87c6e305}</Project>
       <Name>Kruchy.NHibernate</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Kruchy.Uzytkownicy\Kruchy.Uzytkownicy.csproj">
+      <Project>{ec0cbe27-c96d-4edd-b59d-2ba73324f67d}</Project>
+      <Name>Kruchy.Uzytkownicy</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MapowaniaNHibernate\DefinicjaZamowienia.hbm.xml" />
@@ -124,6 +133,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MapowaniaNHibernate\Produkt.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MapowaniaNHibernate\Zamowienie.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MapowaniaNHibernate\PozycjaZamawiana.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
