@@ -10,6 +10,7 @@
     <many-to-one name="GrupaProduktow" column="GrupaProduktowID"/>
     <property name="Nazwa" not-null="true" />
     <property name="Cena" not-null="true" />
+    <property name="NumerWierszaWExcelu" not-null="true" />
   </class>
 
 </hibernate-mapping>

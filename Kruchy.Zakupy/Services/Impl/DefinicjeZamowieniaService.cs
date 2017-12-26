@@ -92,7 +92,8 @@ namespace Kruchy.Zakupy.Services.Impl
                 {
                     Cena = p.CenaDecimal,
                     Nazwa = p.Nazwa,
-                    GrupaProduktow = grupa
+                    GrupaProduktow = grupa,
+                    NumerWierszaWExcelu = p.NumerPozycjiWExcelu
                 };
                 wynik.Add(produkt);
             }

@@ -9,5 +9,7 @@
         public virtual decimal Cena { get; set; }
 
         public virtual GrupaProduktowZamowienia GrupaProduktow { get; set; }
+
+        public virtual int NumerWierszaWExcelu { get; set; }
     }
 }
