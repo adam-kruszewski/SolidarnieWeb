@@ -28,7 +28,11 @@ namespace SolidarnieWebApp.Controllers
 
         public ActionResult Index(int definicjaID)
         {
-            var definicja = definicjeService.DajWgID(definicjaID);
+            var definicja =
+                zamawianieService
+                    .PrzygotujDlaUzytkownika(
+                        definicjaID,
+                        uzytkownikProvider.DajZalogowanego().ID);
 
             var editModel = definicja.Mapuj<ZamowienieEditModel>();
             editModel.DefinicjaID = definicjaID;

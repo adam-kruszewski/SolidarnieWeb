@@ -10,5 +10,8 @@ namespace Kruchy.Zakupy.Repositories
 {
     interface IPozycjaZamawianaRepository : INHibernateRepository<PozycjaZamawiana>
     {
+        IList<PozycjaZamawiana> SzukajWgDefinicjiUzytkownika(
+            int definicjaID,
+            int uzytkownikID);
     }
 }
