@@ -47,6 +47,12 @@ namespace Kruchy.NHibernate.Repositories
             return sessionProvider.DajSesje().QueryOver<T>().List<T>();
         }
 
+        public virtual void Delete(T o)
+        {
+            var session = sessionProvider.DajSesje();
+            session.Delete(o);
+        }
+
         public void Flush()
         {
             sessionProvider.DajSesje().Flush();

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Kruchy.Core.Aspects;
 using Kruchy.Zakupy.Domain;
 using Kruchy.Zakupy.Repositories;
 using Kruchy.Zakupy.Views;
 
 namespace Kruchy.Zakupy.Services.Impl
 {
+    [Transakcyjna]
     class ZamawianieService : IZamawianieService
     {
         private readonly IDefinicjeZamowieniaService definicjeService;
@@ -67,6 +69,7 @@ namespace Kruchy.Zakupy.Services.Impl
             }
             else
             {
+                zamowienie.DataOstatniejAktualizacji = DateTime.Now;
                 AktualizujPozycje(zamowienie, pozycje);
                 zamowienieRepository.Update(zamowienie);
             }
@@ -90,6 +93,8 @@ namespace Kruchy.Zakupy.Services.Impl
             Zamowienie zamowienie,
             IEnumerable<ZamawianaPozycja> zamawianePozycje)
         {
+            foreach (var p in zamowienie.Pozycje)
+                pozycjeZamawianeRepository.Delete(p);
             zamowienie.Pozycje.Clear();
             DodajPozycje(zamowienie, zamawianePozycje);
         }

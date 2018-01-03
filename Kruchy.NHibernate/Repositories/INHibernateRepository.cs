@@ -13,6 +13,8 @@ namespace Kruchy.NHibernate.Repositories
 
         void Update(T o);
 
+        void Delete(T o);
+
         IList<T> GetAll();
 
         void Flush();
