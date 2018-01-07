@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\GroupByResultExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider\HibernateSessionProvider.cs" />
     <Compile Include="Provider\IHibernateSessionProvider.cs" />
