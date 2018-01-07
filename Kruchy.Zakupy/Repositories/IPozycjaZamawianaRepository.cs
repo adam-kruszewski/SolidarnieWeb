@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Kruchy.NHibernate.Repositories;
 using Kruchy.Zakupy.Domain;
 
@@ -13,5 +9,15 @@ namespace Kruchy.Zakupy.Repositories
         IList<PozycjaZamawiana> SzukajWgDefinicjiUzytkownika(
             int definicjaID,
             int uzytkownikID);
+
+        IList<ProduktWZamowieniach> SumaZamowienieWgDefinicji(
+            int definicjaID);
+    }
+
+    public class ProduktWZamowieniach
+    {
+        public int ProduktID { get; set; }
+
+        public int Ilosc { get; set; }
     }
 }

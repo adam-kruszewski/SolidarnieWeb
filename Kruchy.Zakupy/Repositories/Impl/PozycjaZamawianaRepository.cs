@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Kruchy.NHibernate.Extensions;
 using Kruchy.NHibernate.Provider;
 using Kruchy.NHibernate.Repositories;
-using Kruchy.Uzytkownicy.Domain;
 using Kruchy.Zakupy.Domain;
-using NHibernate.Criterion;
 
 namespace Kruchy.Zakupy.Repositories.Impl
 {
@@ -21,8 +21,6 @@ namespace Kruchy.Zakupy.Repositories.Impl
             int definicjaID,
             int uzytkownikID)
         {
-            //Zamowienie zam = null;
-
             return
             Session.QueryOver<PozycjaZamawiana>()
                 .JoinQueryOver(pz => pz.Zamowienie)
@@ -32,16 +30,24 @@ namespace Kruchy.Zakupy.Repositories.Impl
                     .JoinQueryOver(pr => pr.GrupaProduktow)
                         .Where(gp => gp.DefinicjaZamowienia.ID == definicjaID)
                 .List();
-
-            //.JoinAlias<Zamowienie>(pz => pz.Zamowienie, () => zam);
-
-            //throw new System.NotImplementedException();
-            //return
-            //    Session.QueryOver<PozycjaZamawiana>()
-            //        .JoinQueryOver(pz => pz.Produkt)
-            //        .JoinQueryOver(produkt => produkt.GrupaProduktow)
-            //        .Where(p => p.DefinicjaZamowienia.ID == definicjaID)
-            //            .List();
         }
+
+        public IList<ProduktWZamowieniach> SumaZamowienieWgDefinicji(
+            int definicjaID)
+        {
+            var obiekty =
+                Session.QueryOver<PozycjaZamawiana>()
+                    .JoinQueryOver(pz => pz.Zamowienie)
+                    .Where(o => o.Definicja.ID == definicjaID)
+                    .SelectList(list =>
+                            list.SelectGroup(o => o.Produkt.ID)
+                            .SelectSum(o => o.Ilosc))
+                    .List<object[]>()
+                        .Select(o => o.To<ProduktWZamowieniach>())
+                            .ToList();
+
+            return obiekty;
+        }
+
     }
 }

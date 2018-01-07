@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Kruchy.Zakupy.Services;
 using SolidarnieWebApp.Models;
 
@@ -11,11 +7,14 @@ namespace SolidarnieWebApp.Controllers
     public class ZamowieniaController : Controller
     {
         private readonly IDefinicjeZamowieniaService definicjeService;
+        private readonly ISumowanieZamowieniaService sumowanieService;
 
         public ZamowieniaController(
-            IDefinicjeZamowieniaService definicjeService)
+            IDefinicjeZamowieniaService definicjeService,
+            ISumowanieZamowieniaService sumowanieService)
         {
             this.definicjeService = definicjeService;
+            this.sumowanieService = sumowanieService;
         }
 
         public ActionResult Index()
@@ -23,6 +22,12 @@ namespace SolidarnieWebApp.Controllers
             var model = new ListaDefinicjiZamowieniaModel(
                 definicjeService.SzukajWszystkich());
             return View(model);
+        }
+
+        public ActionResult Sumuj(int definicjaID)
+        {
+            var zsumowaneZamowienie = sumowanieService.Sumuj(definicjaID);
+            return View();
         }
     }
 }

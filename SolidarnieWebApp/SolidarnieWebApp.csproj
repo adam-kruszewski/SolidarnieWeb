@@ -366,6 +366,7 @@
     <Content Include="Views\Shared\KomorkaTabeli.cshtml" />
     <Content Include="Views\ZamowienieUzytkownika\Index.cshtml" />
     <Content Include="Views\ZamowienieUzytkownika\Ilosc.cshtml" />
+    <Content Include="Views\Zamowienia\Sumuj.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

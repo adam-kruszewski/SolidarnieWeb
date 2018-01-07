@@ -1,4 +1,11 @@
-﻿<a href="@Url.Action("Edit", "ZamowienieForm", new { id = Model })" class="btn btn-default btn-sm">
+﻿<a href="@Url.Action("Edit", "ZamowienieForm", new { id = Model.Wiersz.ID })" class="btn btn-default btn-sm">
     <span class="glyphicon glyphicon-edit"></span>
     Edytuj
 </a>
+<a href="@Url.Action("Index", "ZamowienieUzytkownika", new { definicjaID = Model.Wiersz.ID })" class="btn btn-default btn-sm">
+    Zamów
+</a>
+<a href="@Url.Action("Sumuj", new { definicjaID = Model.Wiersz.ID })" class="btn btn-default btn-sm">
+    <span class="glyphicon glyphicon-stats"></span>
+    Sumuj
+</a> 
