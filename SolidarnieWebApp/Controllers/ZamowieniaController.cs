@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Kruchy.Core.Mapowanie;
 using Kruchy.Zakupy.Services;
 using SolidarnieWebApp.Models;
 
@@ -27,7 +28,8 @@ namespace SolidarnieWebApp.Controllers
         public ActionResult Sumuj(int definicjaID)
         {
             var zsumowaneZamowienie = sumowanieService.Sumuj(definicjaID);
-            return View();
+            var model = zsumowaneZamowienie.Mapuj<ZsumowaneZamowienieModel>();
+            return View(model);
         }
     }
 }

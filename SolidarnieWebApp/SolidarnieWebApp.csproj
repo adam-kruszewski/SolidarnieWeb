@@ -276,6 +276,9 @@
     <Compile Include="Models\ZamowienieEditModel.cs" />
     <Compile Include="Models\ZamowienieEditPostModel.cs" />
     <Compile Include="Models\ZamowienieModel.cs" />
+    <Compile Include="Models\ZamowionaGrupaModel.cs" />
+    <Compile Include="Models\ZamowionyProduktModel.cs" />
+    <Compile Include="Models\ZsumowaneZamowienieModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolidarnieModule.cs" />
     <Compile Include="Startup.cs" />
@@ -367,6 +370,7 @@
     <Content Include="Views\ZamowienieUzytkownika\Index.cshtml" />
     <Content Include="Views\ZamowienieUzytkownika\Ilosc.cshtml" />
     <Content Include="Views\Zamowienia\Sumuj.cshtml" />
+    <Content Include="Views\Zamowienia\IlosciUzytkownikow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

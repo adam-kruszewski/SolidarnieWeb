@@ -1,9 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Kruchy.Zakupy.Views;
+using SolidarnieWebApp.HtmlHelpers.Attributes;
 
-namespace Kruchy.Zakupy.Views
+namespace SolidarnieWebApp.Models
 {
-    public class ZamowionyProdukt
+    public class ZamowionyProduktModel
     {
+        [UkrytaKolumna]
         public int ProduktID { get; set; }
 
         public string Nazwa { get; set; }
@@ -14,9 +18,10 @@ namespace Kruchy.Zakupy.Views
 
         public decimal SumaKwot { get; set; }
 
+        [UIHint("IlosciUzytkownikow")]
         public List<IloscUzytkownika> IlosciUzytkownikow { get; set; }
 
-        public ZamowionyProdukt()
+        public ZamowionyProduktModel()
         {
             IlosciUzytkownikow = new List<IloscUzytkownika>();
         }

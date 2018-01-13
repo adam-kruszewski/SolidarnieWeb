@@ -62,6 +62,7 @@ namespace Kruchy.Zakupy.Services.Impl
         private ZamowionyProdukt DajZamowionyProdukt(PozycjaZSumowana o)
         {
             var zamowionyProdukt = new ZamowionyProdukt();
+            zamowionyProdukt.Nazwa = o.Produkt.Nazwa;
             zamowionyProdukt.Cena = o.Produkt.Cena;
             zamowionyProdukt.Ilosc = o.ProduktWZamowieniach.Ilosc;
             zamowionyProdukt.ProduktID = o.Produkt.ID;

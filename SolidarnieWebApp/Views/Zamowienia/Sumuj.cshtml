@@ -1,1 +1,19 @@
-<h1> Tu bêdzie suma </h1>
+@using SolidarnieWebApp.Models
+@using SolidarnieWebApp.HtmlHelpers;
+
+@model ZsumowaneZamowienieModel
+
+<h3> Sumaryczne zamówienie</h3>
+
+@foreach (var zg in Model.ZamowioneGrupy)
+{
+    <div class="ZamowionaGrupa">
+        <h4>@zg.NazwaGrupy </h4>
+        <ul>
+            <li>Zamówione @zg.SumaIlosci</li>
+            <li>Wymagane @zg.Limit</li>
+        </ul>
+
+        @Html.GenerujTable(zg.ZamowioneProdukty)
+    </div>
+}
