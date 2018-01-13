@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 
 namespace Kruchy.Core.Mapowanie
 {
@@ -35,24 +36,40 @@ namespace Kruchy.Core.Mapowanie
             Dictionary<PropertyInfo, PropertyInfo> mapaPrzepisania,
             ConstructorInfo konstruktorWyniku)
         {
+            var aktualneMapowanie = new KeyValuePair<PropertyInfo, PropertyInfo>();
             var wynik = konstruktorWyniku.Invoke(new object[0]);
-            foreach (var mapowanie in mapaPrzepisania)
+            try
             {
-                if (!JestKolekcja(mapowanie))
-                    mapowanie.Key.SetValue(wynik, mapowanie.Value.GetValue(zrodlo));
-                else
-                    DodajElementyKolekcji(mapowanie, zrodlo, wynik);
+                foreach (var mapowanie in mapaPrzepisania)
+                {
+                    aktualneMapowanie = mapowanie;
+                    if (!JestKolekcja(mapowanie))
+                        mapowanie.Key.SetValue(wynik, mapowanie.Value.GetValue(zrodlo));
+                    else
+                        DodajElementyKolekcji(mapowanie, zrodlo, wynik);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new MapowanieException(ex, aktualneMapowanie.Key, aktualneMapowanie.Value);
             }
 
             return wynik;
         }
 
-        private bool JestKolekcja(KeyValuePair<PropertyInfo, PropertyInfo> mapowanie)
+        private bool JestKolekcja(
+            KeyValuePair<PropertyInfo, PropertyInfo> mapowanie)
         {
             var typKolekcja = typeof(IList);
+            var typ2Kolekcja = typeof(IList<>);
             var typWlasciwosci = mapowanie.Key.PropertyType;
 
-            return typKolekcja.IsAssignableFrom(typWlasciwosci);
+            if (typWlasciwosci.IsGenericType)
+                typWlasciwosci = typWlasciwosci.GetGenericTypeDefinition();
+
+            return
+                typKolekcja.IsAssignableFrom(typWlasciwosci) ||
+                typ2Kolekcja.IsAssignableFrom(typWlasciwosci);
         }
 
         private void DodajElementyKolekcji<TWynik>(
@@ -101,6 +118,30 @@ namespace Kruchy.Core.Mapowanie
             PropertyInfo wzorzec)
         {
             return listaPropertiesow.SingleOrDefault(o => o.Name == wzorzec.Name);
+        }
+
+        private class MapowanieException : Exception
+        {
+            private readonly Exception exception;
+            private readonly PropertyInfo property1;
+            private readonly PropertyInfo property2;
+
+            public MapowanieException(Exception ex, PropertyInfo property1, PropertyInfo property2)
+            {
+                exception = ex;
+                this.property1 = property1;
+                this.property2 = property2;
+            }
+
+            public override string ToString()
+            {
+                var builder = new StringBuilder();
+                builder.AppendFormat("Błąd mapowania z typu {0} na {1} dla pola {2}",
+                    property1.PropertyType.FullName,
+                    property2.PropertyType.FullName,
+                    property1.Name);
+                return builder.ToString();
+            }
         }
     }
 }
