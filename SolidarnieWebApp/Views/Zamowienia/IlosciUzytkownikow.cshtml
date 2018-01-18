@@ -1,4 +1,13 @@
-﻿<ul>
-    <li>Użytkownik 1 - 1</li>
-    <li>Użytkownik 2 - 10</li>
+﻿@using Kruchy.Zakupy.Views;
+@model KomorkaTabeliModel
+
+@{ 
+    var wiersz = (ZamowionyProduktModel)Model.Wiersz;
+    var ilosciUzytkownika = wiersz.IlosciUzytkownikow as IEnumerable<IloscUzytkownika>;
+}
+<ul>
+@foreach (var iloscUzytkownika in ilosciUzytkownika)
+{
+    <li>@iloscUzytkownika.NazwaUzytkownika - @iloscUzytkownika.Ilosc</li>
+}
 </ul>

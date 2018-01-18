@@ -3,7 +3,9 @@ using System.Linq;
 using Kruchy.NHibernate.Extensions;
 using Kruchy.NHibernate.Provider;
 using Kruchy.NHibernate.Repositories;
+using Kruchy.Uzytkownicy.Domain;
 using Kruchy.Zakupy.Domain;
+using Kruchy.Zakupy.Views;
 
 namespace Kruchy.Zakupy.Repositories.Impl
 {
@@ -15,6 +17,27 @@ namespace Kruchy.Zakupy.Repositories.Impl
             : base(sessionProvider)
         {
 
+        }
+
+        public IList<IloscUzytkownika> SzukajIlosciWgProduktu(int produktID)
+        {
+            PozycjaZamawiana pozycjaZamawianaAlias = null;
+            Zamowienie zamowienie = null;
+            Uzytkownik uzytkownikAlias = null;
+
+            var pozycjeZamawiane =
+                Session.QueryOver<PozycjaZamawiana>(() => pozycjaZamawianaAlias)
+                    .Where(pz => pz.Produkt.ID == produktID)
+                    .JoinQueryOver(pz => pz.Zamowienie, () => zamowienie)
+                    .JoinQueryOver(z => z.Uzytkownik, () => uzytkownikAlias)
+                    .SelectList(
+                        list => list
+                            .Select(() => zamowienie.Uzytkownik.ID)
+                            .Select(() => uzytkownikAlias.Nazwa)
+                            .Select(() => pozycjaZamawianaAlias.Ilosc))
+                    .List<object[]>()
+                    .Select(o => new IloscUzytkownika((int)o[0], (string)o[1], (int)o[2]));
+            return pozycjeZamawiane.ToList();
         }
 
         public IList<PozycjaZamawiana> SzukajWgDefinicjiUzytkownika(

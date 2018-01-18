@@ -67,7 +67,15 @@ namespace Kruchy.Zakupy.Services.Impl
             zamowionyProdukt.Ilosc = o.ProduktWZamowieniach.Ilosc;
             zamowionyProdukt.ProduktID = o.Produkt.ID;
             zamowionyProdukt.SumaKwot = zamowionyProdukt.Cena * zamowionyProdukt.Ilosc;
+            zamowionyProdukt.IlosciUzytkownikow =
+                DajIlosciUzytkownikowWgProduktu(o.Produkt.ID).ToList();
             return zamowionyProdukt;
+        }
+
+        private IList<IloscUzytkownika> DajIlosciUzytkownikowWgProduktu(
+            int produktID)
+        {
+            return pozycjaZamawianaRepository.SzukajIlosciWgProduktu(produktID);
         }
 
         private class PozycjaZSumowana
