@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Kruchy.Core.Mapowanie;
 
 namespace Kruchy.Uzytkownicy.Uprawnienia
 {
@@ -16,12 +17,31 @@ namespace Kruchy.Uzytkownicy.Uprawnienia
 
         public bool SprawdzCzyPosiada(int uzytkownikID, string uprawnienie)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
-        public IList<Uprawnienie> Szukaj()
+        public IList<DefiniowanieUprawnieniaUzytkownikaView> SzukajWgUzytkownika(
+            int uzytkownikID)
+        {
+            return SzukajUprawnien()
+                .Select(o => DajDefiniowaneUprawnienieUzytkownika(o, uzytkownikID))
+                    .ToList();
+        }
+
+        private DefiniowanieUprawnieniaUzytkownikaView DajDefiniowaneUprawnienieUzytkownika(
+            Uprawnienie uprawnienie,
+            int uzytkownikID)
+        {
+            var wynik = uprawnienie.Mapuj<DefiniowanieUprawnieniaUzytkownikaView>();
+
+            wynik.Posiada = SprawdzCzyPosiada(uzytkownikID, uprawnienie.Nazwa);
+            return wynik;
+        }
+
+        private IList<Uprawnienie> SzukajUprawnien()
         {
             return definiowaneUprawnienia.SelectMany(o => o.Daj()).ToList();
         }
+
     }
 }

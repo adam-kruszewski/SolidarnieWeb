@@ -256,6 +256,7 @@
     <Compile Include="Controllers\AdministracjaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogowanieController.cs" />
+    <Compile Include="Controllers\UprawnieniaUzytkownikaController.cs" />
     <Compile Include="Controllers\UzytkownicyController.cs" />
     <Compile Include="Controllers\ZamowieniaController.cs" />
     <Compile Include="Controllers\ZamowienieFormController.cs" />
@@ -271,6 +272,7 @@
     <Compile Include="Models\ListaDefinicjiZamowieniaModel.cs" />
     <Compile Include="Models\ListaUzytkownikowModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\UprawnienieUzytkownikaModel.cs" />
     <Compile Include="Models\UzytkownikEditModel.cs" />
     <Compile Include="Models\UzytkownikRowModel.cs" />
     <Compile Include="Models\ZamowienieEditModel.cs" />
@@ -371,6 +373,7 @@
     <Content Include="Views\ZamowienieUzytkownika\Ilosc.cshtml" />
     <Content Include="Views\Zamowienia\Sumuj.cshtml" />
     <Content Include="Views\Zamowienia\IlosciUzytkownikow.cshtml" />
+    <Content Include="Views\UprawnieniaUzytkownika\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

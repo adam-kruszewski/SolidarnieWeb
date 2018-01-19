@@ -125,6 +125,7 @@
     <Compile Include="Services\IUzytkownicyService.cs" />
     <Compile Include="Services\ModyfikacjaUzytkownikaRequest.cs" />
     <Compile Include="Uprawnienia\DefiniowaneUprawnienia.cs" />
+    <Compile Include="Uprawnienia\DefiniowanieUprawnieniaUzytkownikaView.cs" />
     <Compile Include="Uprawnienia\IDefiniowaneUprawnienia.cs" />
     <Compile Include="Uprawnienia\IUprawnieniaService.cs" />
     <Compile Include="Uprawnienia\UprawnieniaService.cs" />
@@ -163,6 +164,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kruchy.Core\Kruchy.Core.csproj">
+      <Project>{0FE01CD3-4C99-4217-880C-62D6567D6145}</Project>
+      <Name>Kruchy.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kruchy.Model.DataTypes\Kruchy.Model.DataTypes.csproj">
       <Project>{58e70e0e-b135-4d4a-9aa9-a56911739859}</Project>
       <Name>Kruchy.Model.DataTypes</Name>

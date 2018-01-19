@@ -34,6 +34,10 @@
                     <span class="glyphicon glyphicon-remove"></span>
                     Usuń
                 </a>
+                <a href="@Url.Action("Index", "UprawnieniaUzytkownika", new { uzytkownikID = item.ID })"
+                    class="btn btn-default btn-sm">
+                    Uprawnienia
+                </a>
             </td>
         </tr>
     }

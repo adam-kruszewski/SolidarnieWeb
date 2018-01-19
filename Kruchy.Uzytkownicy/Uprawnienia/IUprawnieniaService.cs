@@ -6,6 +6,6 @@ namespace Kruchy.Uzytkownicy.Uprawnienia
     {
         bool SprawdzCzyPosiada(int uzytkownikID, string uprawnienie);
 
-        IList<Uprawnienie> Szukaj();
+        IList<DefiniowanieUprawnieniaUzytkownikaView> SzukajWgUzytkownika(int uzytkownikID);
     }
 }
