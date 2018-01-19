@@ -1,3 +1,5 @@
 @using SolidarnieWebApp.HtmlHelpers
-@model List<UprawnienieUzytkownikaModel>
-@Html.GenerujTable(Model)
+@model DefiniowanieUprawnienUzytkownikaModel
+<h3>Uprawnienia u¿ytkownika: @Model.NazwaUzytkownika</h3>
+@Html.HiddenFor(m => m.UzytkownikID)
+@Html.GenerujTable(Model.Uprawnienia)

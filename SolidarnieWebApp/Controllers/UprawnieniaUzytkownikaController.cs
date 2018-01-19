@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using Kruchy.Core.Mapowanie;
+using Kruchy.Uzytkownicy.Services;
 using Kruchy.Uzytkownicy.Uprawnienia;
 using SolidarnieWebApp.Models;
 
@@ -9,11 +10,14 @@ namespace SolidarnieWebApp.Controllers
     public class UprawnieniaUzytkownikaController : Controller
     {
         private readonly IUprawnieniaService uprawnieniaService;
+        private readonly IUzytkownicyService uzytkownicyService;
 
         public UprawnieniaUzytkownikaController(
-            IUprawnieniaService uprawnieniaService)
+            IUprawnieniaService uprawnieniaService,
+            IUzytkownicyService uzytkownicyService)
         {
             this.uprawnieniaService = uprawnieniaService;
+            this.uzytkownicyService = uzytkownicyService;
         }
 
         public ActionResult Index(int uzytkownikID)
@@ -21,7 +25,12 @@ namespace SolidarnieWebApp.Controllers
             var definiowaneUprawnienia =
                 uprawnieniaService.SzukajWgUzytkownika(uzytkownikID);
 
-            var model =
+            var model = new DefiniowanieUprawnienUzytkownikaModel
+            {
+                UzytkownikID = uzytkownikID
+            };
+            model.NazwaUzytkownika = uzytkownicyService.DajWgID(uzytkownikID).Nazwa;
+            model.Uprawnienia =
                 definiowaneUprawnienia
                     .Select(o => o.Mapuj<UprawnienieUzytkownikaModel>())
                         .ToList();
