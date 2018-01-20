@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using Kruchy.Core.Mapowanie;
 using Kruchy.Uzytkownicy.Services;
 using Kruchy.Uzytkownicy.Uprawnienia;
-using SolidarnieWebApp.Models;
 using SolidarnieWebApp.Models.Uprawnienia;
 
 namespace SolidarnieWebApp.Controllers
@@ -28,31 +27,20 @@ namespace SolidarnieWebApp.Controllers
                 UzytkownikID = uzytkownikID
             };
             model.NazwaUzytkownika = uzytkownicyService.DajWgID(uzytkownikID).Nazwa;
-
-            return View(model);
-        }
-
-        public ActionResult Form(int uzytkownikID)
-        {
             var definiowaneUprawnienia =
                 uprawnieniaService.SzukajWgUzytkownika(uzytkownikID);
-
-            var model = new UprawnieniaUzytkownikaFormModel
-            {
-                UzytkownikID = uzytkownikID
-            };
             model.Uprawnienia =
                 definiowaneUprawnienia
                     .Select(o => o.Mapuj<UprawnienieUzytkownikaModel>())
                         .ToList();
 
-            return PartialView(model);
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Form(UprawnieniaUzytkownikaFormModel form)
+        public ActionResult Form(DefiniowanieUprawnienUzytkownikaModel form)
         {
-            return RedirectToAction("Index", new { uzytkownikID = form.UzytkownikID });
+            return View("Index", form);
         }
     }
 }

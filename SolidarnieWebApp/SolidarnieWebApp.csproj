@@ -376,7 +376,6 @@
     <Content Include="Views\Zamowienia\Sumuj.cshtml" />
     <Content Include="Views\Zamowienia\IlosciUzytkownikow.cshtml" />
     <Content Include="Views\UprawnieniaUzytkownika\Index.cshtml" />
-    <Content Include="Views\UprawnieniaUzytkownika\Form.cshtml" />
     <Content Include="Views\UprawnieniaUzytkownika\PosiadaUprawnienie.cshtml" />
   </ItemGroup>
   <ItemGroup>
