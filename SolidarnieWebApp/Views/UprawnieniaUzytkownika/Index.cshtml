@@ -1,5 +1,5 @@
 @using SolidarnieWebApp.HtmlHelpers
+@using SolidarnieWebApp.Models.Uprawnienia;
 @model DefiniowanieUprawnienUzytkownikaModel
 <h3>Uprawnienia u¿ytkownika: @Model.NazwaUzytkownika</h3>
-@Html.HiddenFor(m => m.UzytkownikID)
-@Html.GenerujTable(Model.Uprawnienia)
+@Html.Action("Form", new { uzytkownikID = Model.UzytkownikID })

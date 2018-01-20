@@ -268,12 +268,13 @@
     <Compile Include="HtmlHelpers\FormHelper.cs" />
     <Compile Include="HtmlHelpers\TableHelper.cs" />
     <Compile Include="Models\DefinicjaZamowieniaRowModel.cs" />
-    <Compile Include="Models\DefiniowanieUprawnienUzytkownikaModel.cs" />
+    <Compile Include="Models\Uprawnienia\DefiniowanieUprawnienUzytkownikaModel.cs" />
     <Compile Include="Models\KomorkaTabeliModel.cs" />
     <Compile Include="Models\ListaDefinicjiZamowieniaModel.cs" />
     <Compile Include="Models\ListaUzytkownikowModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\UprawnienieUzytkownikaModel.cs" />
+    <Compile Include="Models\Uprawnienia\UprawnieniaUzytkownikaFormModel.cs" />
+    <Compile Include="Models\Uprawnienia\UprawnienieUzytkownikaModel.cs" />
     <Compile Include="Models\UzytkownikEditModel.cs" />
     <Compile Include="Models\UzytkownikRowModel.cs" />
     <Compile Include="Models\ZamowienieEditModel.cs" />
@@ -375,6 +376,8 @@
     <Content Include="Views\Zamowienia\Sumuj.cshtml" />
     <Content Include="Views\Zamowienia\IlosciUzytkownikow.cshtml" />
     <Content Include="Views\UprawnieniaUzytkownika\Index.cshtml" />
+    <Content Include="Views\UprawnieniaUzytkownika\Form.cshtml" />
+    <Content Include="Views\UprawnieniaUzytkownika\PosiadaUprawnienie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

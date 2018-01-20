@@ -1,0 +1,11 @@
+@using SolidarnieWebApp.HtmlHelpers
+@using SolidarnieWebApp.Models.Uprawnienia;
+
+@model UprawnieniaUzytkownikaFormModel
+@using (Html.BeginForm("Form"))
+{
+    @Html.HiddenFor(m => m.UzytkownikID)
+    @Html.GenerujTable(Model.Uprawnienia)
+
+    @Html.GenerujPrzyciskiFormularza(@Url.Action("Index", "Uzytkownicy"))
+}

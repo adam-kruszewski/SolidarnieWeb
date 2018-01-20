@@ -1,0 +1,10 @@
+﻿@using SolidarnieWebApp.Models;
+@using SolidarnieWebApp.Models.Uprawnienia;
+@model KomorkaTabeliModel
+
+@{
+    var wiersz = Model.Wiersz as UprawnienieUzytkownikaModel;
+}
+<b>Tu będzie edycja uprawnienia</b>
+@*@Html.Hidden("form.Pozycje[" + Model.NumerWiersza + "].ID", wiersz.ID)*@
+@Html.Editor("Wiersz." + Model.NazwaWlasciwosci, "bool", htmlFieldName: "Uprawnienia[" + Model.NumerWiersza + "].Posiada")
