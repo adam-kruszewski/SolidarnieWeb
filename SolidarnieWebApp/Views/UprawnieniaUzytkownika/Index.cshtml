@@ -6,6 +6,7 @@
 @using (Html.BeginForm("Form", "UprawnieniaUzytkownika"))
 {
     @Html.HiddenFor(m => m.UzytkownikID)
+    @Html.HiddenFor(m => m.NazwaUzytkownika)
     @Html.GenerujTable(Model.Uprawnienia)
 
     @Html.GenerujPrzyciskiFormularza(@Url.Action("Index", "Uzytkownicy"))

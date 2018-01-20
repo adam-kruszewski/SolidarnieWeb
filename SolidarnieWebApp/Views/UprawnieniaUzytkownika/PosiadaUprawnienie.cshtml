@@ -6,5 +6,6 @@
     var wiersz = Model.Wiersz as UprawnienieUzytkownikaModel;
 }
 <b>Tu będzie edycja uprawnienia</b>
-@*@Html.Hidden("form.Pozycje[" + Model.NumerWiersza + "].ID", wiersz.ID)*@
+@Html.Hidden("Uprawnienia[" + Model.NumerWiersza + "].Nazwa", wiersz.Nazwa)
+@Html.Hidden("Uprawnienia[" + Model.NumerWiersza + "].Opis", wiersz.Opis)
 @Html.Editor("Wiersz." + Model.NazwaWlasciwosci, "bool", htmlFieldName: "Uprawnienia[" + Model.NumerWiersza + "].Posiada")
