@@ -273,7 +273,6 @@
     <Compile Include="Models\ListaDefinicjiZamowieniaModel.cs" />
     <Compile Include="Models\ListaUzytkownikowModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\Uprawnienia\UprawnieniaUzytkownikaFormModel.cs" />
     <Compile Include="Models\Uprawnienia\UprawnienieUzytkownikaModel.cs" />
     <Compile Include="Models\UzytkownikEditModel.cs" />
     <Compile Include="Models\UzytkownikRowModel.cs" />
