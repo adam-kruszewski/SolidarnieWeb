@@ -1,23 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Kruchy.Core.Mapowanie;
+using Kruchy.Uzytkownicy.Repositories;
 
 namespace Kruchy.Uzytkownicy.Uprawnienia
 {
     class UprawnieniaService : IUprawnieniaService
     {
         private readonly IList<IDefiniowaneUprawnienia> definiowaneUprawnienia;
+        private readonly IUprawnienieUzytkownikaRepository uprawnienieUzytkownikaRepository;
 
         public UprawnieniaService(
-            IList<IDefiniowaneUprawnienia> definiowaneUprawnienia)
+            IList<IDefiniowaneUprawnienia> definiowaneUprawnienia,
+            IUprawnienieUzytkownikaRepository uprawnienieUzytkownikaRepository)
         {
             this.definiowaneUprawnienia = definiowaneUprawnienia;
+            this.uprawnienieUzytkownikaRepository = uprawnienieUzytkownikaRepository;
         }
 
         public bool SprawdzCzyPosiada(int uzytkownikID, string uprawnienie)
         {
-            return false;
+            return uprawnienieUzytkownikaRepository
+                .PosiadaWgUzytkownikaUprawnienia(
+                    uzytkownikID,
+                    uprawnienie);
         }
 
         public IList<DefiniowanieUprawnieniaUzytkownikaView> SzukajWgUzytkownika(

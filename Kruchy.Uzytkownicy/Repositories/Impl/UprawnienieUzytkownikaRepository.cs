@@ -16,6 +16,19 @@ namespace Kruchy.Uzytkownicy.Repositories.Impl
 
         }
 
+        public bool PosiadaWgUzytkownikaUprawnienia(
+            int uzytkownikID,
+            string uprawnienie)
+        {
+            return
+                Session
+                    .QueryOver<UprawnienieUzytkownika>()
+                        .Where(o => o.Uzytkownik.ID == uzytkownikID)
+                        .Where(o => o.Uprawnienie == uprawnienie)
+                        .Where(o => o.DataDo == null)
+                        .RowCount() > 0;
+        }
+
         public IList<UprawnienieUzytkownika> SzukajWgUzytkownika(int uzytkownikID)
         {
             return Session
