@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Kruchy.Uzytkownicy"
+                   namespace="Kruchy.Uzytkownicy.Domain">
+
+  <class name="UprawnienieUzytkownika" table="Uprawnienia_uzytkownikow">
+    <id name="ID">
+      <generator class="identity" />
+    </id>
+    <property name="DataOd" />
+
+    <property name="DataDo" />
+
+    <property name="Uprawnienie" />
+
+    <many-to-one name="Uzytkownik" column="UzytkownikID"/>
+  </class>
+
+</hibernate-mapping>

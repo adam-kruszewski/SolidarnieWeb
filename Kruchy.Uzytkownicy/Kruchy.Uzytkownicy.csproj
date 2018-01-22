@@ -116,6 +116,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\UprawnienieUzytkownika.cs" />
     <Compile Include="Domain\Uzytkownik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Impl\UzytkownikRepository.cs" />
@@ -145,6 +146,7 @@
     <Content Include="hibernate.cfg.xml">
       <SubType>Designer</SubType>
     </Content>
+    <EmbeddedResource Include="MapowaniaNHibernate\UprawnienieUzytkownika.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MapowaniaNHibernate\Uzytkownik.hbm.xml">
