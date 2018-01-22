@@ -85,8 +85,13 @@
       <HintPath>..\packages\NHibernate.4.1.0.4000\lib\net40\NHibernate.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\..\..\Testy\WebApplication2\WebApplication2\lib\Ninject.dll</HintPath>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception, Version=3.3.3.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Interception.3.3.3\lib\net45\Ninject.Extensions.Interception.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="nunit.framework, Version=3.6.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.6.0\lib\net45\nunit.framework.dll</HintPath>
@@ -119,10 +124,14 @@
     <Compile Include="Domain\UprawnienieUzytkownika.cs" />
     <Compile Include="Domain\Uzytkownik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Impl\UprawnienieUzytkownikaRepository.cs" />
     <Compile Include="Repositories\Impl\UzytkownikRepository.cs" />
     <Compile Include="Repositories\IUzytkownikRepository.cs" />
+    <Compile Include="Repositories\IUprawnienieUzytkownikaRepository.cs" />
     <Compile Include="Services\DodanieUzytkownikaRequest.cs" />
+    <Compile Include="Services\Impl\UprawnieniaUzytkownikaService.cs" />
     <Compile Include="Services\Impl\UzytkownicyService.cs" />
+    <Compile Include="Services\IUprawnieniaUzytkownikaService.cs" />
     <Compile Include="Services\IUzytkownicyService.cs" />
     <Compile Include="Services\ModyfikacjaUzytkownikaRequest.cs" />
     <Compile Include="Uprawnienia\DefiniowaneUprawnienia.cs" />
@@ -137,7 +146,9 @@
     <Compile Include="Walidacja\IWalidacjaUzytkownika.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

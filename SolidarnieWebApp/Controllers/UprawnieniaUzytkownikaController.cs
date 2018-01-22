@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using Kruchy.Core.Mapowanie;
 using Kruchy.Uzytkownicy.Services;
@@ -11,13 +12,16 @@ namespace SolidarnieWebApp.Controllers
     {
         private readonly IUprawnieniaService uprawnieniaService;
         private readonly IUzytkownicyService uzytkownicyService;
+        private readonly IUprawnieniaUzytkownikaService uprawnieniaUzytkownikaService;
 
         public UprawnieniaUzytkownikaController(
             IUprawnieniaService uprawnieniaService,
-            IUzytkownicyService uzytkownicyService)
+            IUzytkownicyService uzytkownicyService,
+            IUprawnieniaUzytkownikaService uprawnieniaUzytkownikaService)
         {
             this.uprawnieniaService = uprawnieniaService;
             this.uzytkownicyService = uzytkownicyService;
+            this.uprawnieniaUzytkownikaService = uprawnieniaUzytkownikaService;
         }
 
         public ActionResult Index(int uzytkownikID)
@@ -40,6 +44,10 @@ namespace SolidarnieWebApp.Controllers
         [HttpPost]
         public ActionResult Form(DefiniowanieUprawnienUzytkownikaModel form)
         {
+
+            uprawnieniaUzytkownikaService.ZapiszUprawnienia(
+                form.UzytkownikID,
+                form.Uprawnienia.Select(o => Tuple.Create(o.Nazwa, o.Posiada)).ToList());
             return View("Index", form);
         }
     }
