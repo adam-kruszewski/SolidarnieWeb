@@ -8,33 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Zakupy solidarne", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Lista zamówień", "Index", "Zamowienia")</li>
-                    <li>@Html.ActionLink("Zarządzanie użytkownikami", "Index", "Uzytkownicy")</li>
-                    <li>@Html.ActionLink("Administracja", "Index", "Administracja")</li>
-                </ul>
-                <div class="pull-right">
-                    <div class="btn-group">
-                        @Html.Action("ButtonLogowania", "Logowanie")
-                        @*<a class="btn-default btn-lg" href="@Url.Action("Login", "Home")">
-                            Zaloguj
-                        </a>*@
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @Html.Action("Menu", "Home")
     <div class="container body-content">
         @RenderBody()
         <hr />

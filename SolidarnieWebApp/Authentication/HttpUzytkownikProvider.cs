@@ -12,9 +12,20 @@ namespace SolidarnieWebApp.Authentication
         public IUzytkownik DajZalogowanego()
         {
             var cookie = HttpContext.Current.Request.Cookies["solidarnie"];
+            var uzytkownik = SzukajZalogowanego();
+
+            if (uzytkownik == null)
+                throw new AuthenticationException("Brak zalogowanego użytkownika");
+
+            return uzytkownik;
+        }
+
+        public IUzytkownik SzukajZalogowanego()
+        {
+            var cookie = HttpContext.Current.Request.Cookies["solidarnie"];
 
             if (cookie == null)
-                throw new AuthenticationException("Brak zalogowanego użytkownika");
+                return null;
 
             var userView =
                 new JsonSerializer()
@@ -22,8 +33,8 @@ namespace SolidarnieWebApp.Authentication
                         new JsonTextReader(new StringReader(cookie.Value)));
 
             return new Uzytkownik(userView);
-        }
 
+        }
         private class Uzytkownik : IUzytkownik
         {
             private readonly UzytkownikView view;

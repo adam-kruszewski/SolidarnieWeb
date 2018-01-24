@@ -1,11 +1,7 @@
-﻿using System;
-using System.IO;
-using System.Security.Claims;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Kruchy.Core.Autentykacja;
 using Kruchy.Uzytkownicy.Services;
-using Kruchy.Uzytkownicy.Views;
-using Newtonsoft.Json;
+using Kruchy.Uzytkownicy.Uprawnienia;
 using SolidarnieWebApp.Models;
 
 namespace SolidarnieWebApp.Controllers
@@ -13,11 +9,17 @@ namespace SolidarnieWebApp.Controllers
     public class HomeController : Controller
     {
         private readonly IUzytkownicyService uzytkownicyService;
+        private readonly IUprawnieniaService uprawnieniaService;
+        private readonly IUzytkownikProvider uzytkownikProvider;
 
         public HomeController(
-            IUzytkownicyService uzytkownicyService)
+            IUzytkownicyService uzytkownicyService,
+            IUprawnieniaService uprawnieniaService,
+            IUzytkownikProvider uzytkownikProvider)
         {
             this.uzytkownicyService = uzytkownicyService;
+            this.uprawnieniaService = uprawnieniaService;
+            this.uzytkownikProvider = uzytkownikProvider;
         }
 
         public ActionResult Index()
@@ -31,6 +33,19 @@ namespace SolidarnieWebApp.Controllers
                 return PartialView("ButtonWyloguj");
             else
                 return PartialView("ButtonZaloguj");
+        }
+
+        public ActionResult Menu()
+        {
+            var model = new MenuModel();
+            var u = uzytkownikProvider.SzukajZalogowanego();
+            if (u != null)
+                model.Administrator =
+                    uprawnieniaService
+                        .SprawdzCzyPosiada(
+                            u.ID,
+                            "Administrator");
+            return PartialView(model);
         }
     }
 }

@@ -3,5 +3,7 @@
     public interface IUzytkownikProvider
     {
         IUzytkownik DajZalogowanego();
+
+        IUzytkownik SzukajZalogowanego();
     }
 }
