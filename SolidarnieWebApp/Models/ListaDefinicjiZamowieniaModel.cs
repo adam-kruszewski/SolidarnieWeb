@@ -8,6 +8,8 @@ namespace SolidarnieWebApp.Models
     {
         public List<DefinicjaZamowieniaRowModel> Definicje { get; set; }
 
+        public bool Administrator { get; set; }
+
         public ListaDefinicjiZamowieniaModel(IEnumerable<DefinicjaZamowieniaView> definicje)
         {
             Definicje = definicje.Select(o => DajRowModel(o)).ToList();

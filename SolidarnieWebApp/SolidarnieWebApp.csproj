@@ -261,6 +261,7 @@
     <Compile Include="Controllers\ZamowieniaController.cs" />
     <Compile Include="Controllers\ZamowienieFormController.cs" />
     <Compile Include="Controllers\ZamowienieUzytkownikaController.cs" />
+    <Compile Include="Extensions\UprawnieniaServiceExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

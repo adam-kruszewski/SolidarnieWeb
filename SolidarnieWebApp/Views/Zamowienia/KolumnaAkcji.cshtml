@@ -1,7 +1,13 @@
-﻿<a href="@Url.Action("Edit", "ZamowienieForm", new { id = Model.Wiersz.ID })" class="btn btn-default btn-sm">
-    <span class="glyphicon glyphicon-edit"></span>
-    Edytuj
-</a>
+﻿@{
+    bool administrator = ViewBag.Administrator;
+}
+@if (administrator)
+{
+    <a href="@Url.Action("Edit", "ZamowienieForm", new { id = Model.Wiersz.ID })" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-edit"></span>
+        Edytuj
+    </a>
+}
 <a href="@Url.Action("Index", "ZamowienieUzytkownika", new { definicjaID = Model.Wiersz.ID })" class="btn btn-default btn-sm">
     Zamów
 </a>

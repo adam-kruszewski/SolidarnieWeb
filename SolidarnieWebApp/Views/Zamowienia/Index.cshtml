@@ -2,12 +2,13 @@
 @model SolidarnieWebApp.Models.ListaDefinicjiZamowieniaModel
 
 <h2>Lista zamówieñ</h2>
-
-<p>
-    <a href="@Url.Action("Create", "ZamowienieForm")" class="btn btn-default">
-        <span class="glyphicon glyphicon-plus"></span>
-        Dodaj nowe
-    </a>
-</p>
-
+@if (Model.Administrator)
+{
+    <p>
+        <a href="@Url.Action("Create", "ZamowienieForm")" class="btn btn-default">
+            <span class="glyphicon glyphicon-plus"></span>
+            Dodaj nowe
+        </a>
+    </p>
+}
 @Html.GenerujTable(Model.Definicje)
