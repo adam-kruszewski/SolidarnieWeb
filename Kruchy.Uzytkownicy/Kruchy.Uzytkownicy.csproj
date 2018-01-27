@@ -121,6 +121,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aspects\WymagaUprawnieniaAttribute.cs" />
+    <Compile Include="Aspects\WymagaUprawnieniaInterceptor.cs" />
     <Compile Include="Domain\UprawnienieUzytkownika.cs" />
     <Compile Include="Domain\Uzytkownik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
