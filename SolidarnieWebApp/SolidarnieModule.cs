@@ -3,14 +3,18 @@ using Kruchy.NHibernate.Provider;
 using Kruchy.NInject.Adapter.Ladowanie;
 using Kruchy.Uzytkownicy;
 using Kruchy.Zakupy;
+using Ninject;
 using Ninject.Modules;
 using Ninject.Web.Common;
 using SolidarnieWebApp.Authentication;
+using SolidarnieWebApp.Services;
 
 namespace SolidarnieWebApp
 {
     public class SolidarnieModule : NinjectModule
     {
+
+
         public override void Load()
         {
             Kernel.LoadOnce<UzytkownicyModule>();
@@ -21,10 +25,8 @@ namespace SolidarnieWebApp
 
             Kernel.Bind<IUzytkownikProvider>().To<HttpUzytkownikProvider>();
 
-            var sesjaProvider =
-                Kernel.GetService(typeof(IHibernateSessionProvider))
-                    as IHibernateSessionProvider;
-            sesjaProvider.AktualizujBaze();
+            var przygotowanie = Kernel.Get<IStartAplikacji>();
+            przygotowanie.Przygotuj();
         }
     }
 }
