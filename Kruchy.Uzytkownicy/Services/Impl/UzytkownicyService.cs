@@ -12,13 +12,16 @@ namespace Kruchy.Uzytkownicy.Services.Impl
     {
         private readonly IUzytkownikRepository repository;
         private readonly IWalidacjaUzytkownika walidacjaUzytkownika;
+        private readonly ISkrotHaslaService skrotHasla;
 
         public UzytkownicyService(
             IUzytkownikRepository repository,
-            IWalidacjaUzytkownika walidacjaUzytkownika)
+            IWalidacjaUzytkownika walidacjaUzytkownika,
+            ISkrotHaslaService skrotHasla)
         {
             this.repository = repository;
             this.walidacjaUzytkownika = walidacjaUzytkownika;
+            this.skrotHasla = skrotHasla;
         }
 
         public UzytkownikView DajWgID(int id)
@@ -75,7 +78,8 @@ namespace Kruchy.Uzytkownicy.Services.Impl
             {
                 Nazwa = request.Nazwa,
                 Email = request.Email,
-                Haslo = request.Haslo
+                Haslo = request.Haslo,
+                SkrotHasla = skrotHasla.Wylicz(request.Haslo)
             };
 
             return repository.Save(nowy).ID;
@@ -102,6 +106,7 @@ namespace Kruchy.Uzytkownicy.Services.Impl
             uzytkownik.Nazwa = request.Nazwa;
             uzytkownik.Email = request.Email;
             uzytkownik.Haslo = request.Haslo;
+            uzytkownik.SkrotHasla = skrotHasla.Wylicz(request.Haslo);
             if (!walidacjaUzytkownika.Waliduj(uzytkownik, listener))
                 return false;
             if (!ZgodneHasla(request, listener))

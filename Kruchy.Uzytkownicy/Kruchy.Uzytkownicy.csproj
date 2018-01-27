@@ -131,8 +131,10 @@
     <Compile Include="Repositories\IUzytkownikRepository.cs" />
     <Compile Include="Repositories\IUprawnienieUzytkownikaRepository.cs" />
     <Compile Include="Services\DodanieUzytkownikaRequest.cs" />
+    <Compile Include="Services\Impl\SkrotHaslaService.cs" />
     <Compile Include="Services\Impl\UprawnieniaUzytkownikaService.cs" />
     <Compile Include="Services\Impl\UzytkownicyService.cs" />
+    <Compile Include="Services\ISkrotHaslaService.cs" />
     <Compile Include="Services\IUprawnieniaUzytkownikaService.cs" />
     <Compile Include="Services\IUzytkownicyService.cs" />
     <Compile Include="Services\ModyfikacjaUzytkownikaRequest.cs" />
@@ -142,6 +144,7 @@
     <Compile Include="Uprawnienia\IUprawnieniaService.cs" />
     <Compile Include="Uprawnienia\UprawnieniaService.cs" />
     <Compile Include="Uprawnienia\Uprawnienie.cs" />
+    <Compile Include="Utils\PrzygotowanieAplikacji.cs" />
     <Compile Include="UzytkownicyModule.cs" />
     <Compile Include="Views\UzytkownikView.cs" />
     <Compile Include="Walidacja\Impl\WalidacjaUzytkownika.cs" />

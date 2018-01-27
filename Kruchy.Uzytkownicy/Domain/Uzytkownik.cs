@@ -9,5 +9,7 @@
         public virtual string Email { get; set; }
 
         public virtual string Haslo { get; set; }
+
+        public virtual string SkrotHasla { get; set; }
     }
 }
