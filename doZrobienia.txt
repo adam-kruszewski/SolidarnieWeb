@@ -1,5 +1,5 @@
-- szyfrowanie has³a
+- inicjacja aplikacji
 - zmiana has³a
-- case insensitive dla u¿ytkownika
 - uzupe³niania excela
 - wysy³anie maila z potwierdzeniem przyjêcia zamówienia
+- czas koñca zamawiania, bo na razie jest tylko data

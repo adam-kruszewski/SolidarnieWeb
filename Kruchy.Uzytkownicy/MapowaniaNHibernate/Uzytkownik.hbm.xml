@@ -9,7 +9,6 @@
     </id>
     <property name="Nazwa" />
     <property name="Email" />
-    <property name="Haslo" />
     <property name="SkrotHasla" />
   </class>
 

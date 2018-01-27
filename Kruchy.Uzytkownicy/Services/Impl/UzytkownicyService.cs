@@ -78,7 +78,6 @@ namespace Kruchy.Uzytkownicy.Services.Impl
             {
                 Nazwa = request.Nazwa,
                 Email = request.Email,
-                Haslo = request.Haslo,
                 SkrotHasla = skrotHasla.Wylicz(request.Haslo)
             };
 
@@ -93,7 +92,6 @@ namespace Kruchy.Uzytkownicy.Services.Impl
                 Nazwa = request.Nazwa,
                 Email = request.Email,
                 ID = default(int),
-                Haslo = request.Haslo
             };
         }
 
@@ -105,7 +103,6 @@ namespace Kruchy.Uzytkownicy.Services.Impl
 
             uzytkownik.Nazwa = request.Nazwa;
             uzytkownik.Email = request.Email;
-            uzytkownik.Haslo = request.Haslo;
             uzytkownik.SkrotHasla = skrotHasla.Wylicz(request.Haslo);
             if (!walidacjaUzytkownika.Waliduj(uzytkownik, listener))
                 return false;
