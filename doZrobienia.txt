@@ -1,0 +1,5 @@
+- szyfrowanie has³a
+- zmiana has³a
+- case insensitive dla u¿ytkownika
+- uzupe³niania excela
+- wysy³anie maila z potwierdzeniem przyjêcia zamówienia

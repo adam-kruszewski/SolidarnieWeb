@@ -18,7 +18,7 @@ namespace Kruchy.Uzytkownicy.Repositories.Impl
             return
                 Session
                     .CreateCriteria<Uzytkownik>()
-                    .Add(Restrictions.Eq("Nazwa", nazwa))
+                    .Add(Restrictions.Eq("Nazwa", nazwa).IgnoreCase())
                     .List<Uzytkownik>()
                     .SingleOrDefault();
         }
