@@ -70,6 +70,7 @@
     <Compile Include="Aspects\TransakcyjnyInterceptor.cs" />
     <Compile Include="Autentykacja\IUzytkownik.cs" />
     <Compile Include="Autentykacja\IUzytkownikProvider.cs" />
+    <Compile Include="Konfiguracja\IPrzygotowanieAplikacji.cs" />
     <Compile Include="Mapowanie\Maper.cs" />
     <Compile Include="Mapowanie\MaperExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
