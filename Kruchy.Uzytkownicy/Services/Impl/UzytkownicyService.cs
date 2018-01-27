@@ -53,7 +53,7 @@ namespace Kruchy.Uzytkownicy.Services.Impl
             string haslo)
         {
             var uzytkownik = repository.SzukajWgNazwy(nazwa);
-            if (uzytkownik == null || uzytkownik.Haslo != haslo)
+            if (uzytkownik == null || uzytkownik.SkrotHasla != skrotHasla.Wylicz(haslo))
                 return null;
 
             return new UzytkownikView
